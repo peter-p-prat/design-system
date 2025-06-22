@@ -1,0 +1,421 @@
+@use "@app/Foundations/theme/colors";
+
+.button {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: var(--justify-content, center);
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 200ms ease-in-out;
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    left: -1px;
+    top: -1px;
+    opacity: 0;
+    background-color: transparent;
+  }
+
+  .spinner {
+    position: absolute;
+  }
+
+  &.loading {
+    .buttonIcon,
+    .buttonLabel {
+      visibility: hidden;
+    }
+  }
+
+  &.rounded {
+    border-radius: 40px;
+    &::before {
+      border-radius: 40px;
+    }
+  }
+
+  &.square {
+    border-radius: 4px;
+    &::before {
+      border-radius: 4px;
+    }
+  }
+
+  &::before {
+    transition: all 200ms ease-in-out;
+  }
+
+  &Label,
+  &Icon {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.filled {
+    color: colors.palette(neutral, white);
+    background-color: colors.palette(buttons, 500);
+    border: solid 1px colors.palette(buttons, 500);
+
+    &:hover {
+      &::before {
+        background-color: colors.palette(buttons, 800);
+        opacity: 0.4;
+      }
+    }
+
+    &:active {
+      &::before {
+        background-color: colors.palette(buttons, 25);
+        opacity: 0.2;
+      }
+    }
+
+    &.disabled {
+      border-color: colors.palette(buttons, 50);
+      &::before {
+        background-color: colors.palette(buttons, 50);
+        opacity: unset;
+      }
+    }
+  }
+
+  &.outlined {
+    background-color: unset;
+    color: colors.palette(buttons, 500);
+    border: solid 1px colors.palette(buttons, 500);
+
+    &.light {
+      background-color: transparent;
+      color: colors.palette(bg, 1);
+      border-color: colors.palette(bg, 1);
+
+      &::before {
+        content: none;
+      }
+
+      &:hover {
+        background-color: rgba(colors.palette(bg, 1), 0.15);
+      }
+
+      &:active {
+        background-color: rgba(colors.palette(bg, 1), 0.1);
+      }
+
+      &.disabled {
+        color: colors.palette(gray, 300);
+        background-color: transparent;
+        border-color: colors.palette(gray, 300);
+      }
+    }
+
+    &::before {
+      transition: opacity 0ms;
+    }
+
+    &:hover {
+      &::before {
+        background-color: colors.palette(buttons, 800);
+        opacity: 0.1;
+      }
+    }
+
+    &:active {
+      &::before {
+        background-color: colors.palette(buttons, 25);
+        opacity: 0.8;
+      }
+    }
+
+    &.disabled {
+      border-color: transparent;
+      color: colors.palette(buttons, 100);
+      &::before {
+        width: 100%;
+        height: 100%;
+        background-color: unset;
+        border: solid 1px colors.palette(buttons, 100);
+        opacity: unset;
+      }
+    }
+  }
+
+  &.light {
+    color: colors.palette(buttons, 500);
+    background-color: colors.palette(buttons, 50);
+    border: solid 1px colors.palette(buttons, 50);
+
+    &:hover {
+      &::before {
+        background-color: colors.palette(buttons, 800);
+        opacity: 0.08;
+      }
+    }
+
+    &:active {
+      &::before {
+        background-color: colors.palette(buttons, 25);
+        opacity: 0.2;
+        z-index: 2;
+      }
+    }
+
+    &.disabled {
+      color: colors.palette(buttons, 100);
+      border-color: colors.palette(buttons, 25);
+      &::before {
+        z-index: 0;
+        background-color: colors.palette(buttons, 25);
+        opacity: unset;
+      }
+    }
+  }
+
+  &.ghost {
+    color: colors.palette(buttons, 500);
+    background-color: transparent;
+    border: solid 1px transparent;
+
+    &::before {
+      content: none;
+    }
+
+    &:hover {
+      color: colors.palette(buttons, 700);
+      background-color: colors.palette(buttons, 25);
+    }
+
+    &:active {
+      color: colors.palette(buttons, 500);
+      background-color: transparent;
+    }
+
+    &.disabled {
+      color: colors.palette(buttons, 100);
+      background-color: transparent;
+    }
+
+    &.light {
+      color: colors.palette(bg, 1);
+
+      &:hover {
+        background-color: rgba(colors.palette(bg, 1), 0.15);
+      }
+
+      &:active {
+        background-color: rgba(colors.palette(bg, 1), 0.1);
+      }
+
+      &.disabled {
+        color: colors.palette(gray, 300);
+        border-color: transparent;
+        background-color: transparent;
+      }
+    }
+
+    &.gray {
+      color: colors.palette(gray, 400);
+
+      &:hover {
+        background-color: rgba(colors.palette(gray, 50), 0.5);
+      }
+
+      &:active {
+        background-color: rgba(colors.palette(gray, 50), 0.3);
+      }
+
+      &.disabled {
+        color: colors.palette(gray, 200);
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.overPrimary {
+    color: colors.palette(buttonOverPrimary, label-color);
+    background-color: colors.palette(buttonOverPrimary, bg-color);
+    border: solid 1px colors.palette(buttonOverPrimary, bg-color);
+
+    &:hover {
+      &::before {
+        background-color: colors.palette(buttonOverPrimary, hover-overlay);
+        opacity: 0.45;
+      }
+    }
+
+    &:active {
+      &::before {
+        background-color: colors.palette(buttonOverPrimary, pressed-overlay);
+        opacity: 0.2;
+      }
+    }
+
+    &.disabled {
+      color: colors.palette(buttonOverPrimary, disabled);
+
+      &::before {
+        background-color: colors.palette(buttonOverPrimary, bg-color);
+      }
+    }
+  }
+
+  &.xs {
+      height: 32px;
+      padding: 0 12px;
+      gap: 8px;
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:not(:has(.buttonLabel)) {
+      padding: 0;
+      width: 32px;
+    }
+  }
+
+  &.sm {
+      height: 36px;
+      padding: 0 12px;
+      gap: 8px;
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:not(:has(.buttonLabel)) {
+      padding: 0;
+      width: 36px;
+    }
+  }
+
+  &.md {
+      height: 40px;
+      padding: 0 16px;
+      gap: 8px;
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:not(:has(.buttonLabel)) {
+      padding: 0;
+      width: 40px;
+    }
+  }
+
+  &.lg {
+      height: 44px;
+      padding: 0 24px;
+      gap: 8px;
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:not(:has(.buttonLabel)) {
+      padding: 0;
+      width: 44px;
+    }
+  }
+
+  &.xl {
+      height: 48px;
+      padding: 0 32px;
+      gap: 8px;
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:not(:has(.buttonLabel)) {
+      padding: 0;
+      width: 48px;
+    }
+  }
+
+  &.xl-2 {
+      height: 60px;
+      padding: 0 32px;
+      gap: 12px;
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+    }
+
+    &:not(:has(.buttonLabel)) {
+      padding: 0;
+      width: 60px;
+    }
+  }
+
+  &.ghostV2 {
+    padding: 0;
+    color: colors.palette(buttons, 500);
+    background-color: transparent;
+    border: solid 1px transparent;
+
+    &::before {
+      content: none;
+    }
+
+    &:hover {
+      color: colors.palette(buttons, 700);
+    }
+
+    &:active {
+      color: colors.palette(buttons, 400);
+    }
+
+    &.disabled {
+      color: colors.palette(buttons, 100);
+    }
+
+    &.light {
+      color: colors.palette(bg, 1);
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 1;
+      }
+
+      &.disabled {
+        border: solid 1px transparent;
+        opacity: 0.3;
+      }
+    }
+
+    &.gray {
+      color: colors.palette(gray, 300);
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 1;
+      }
+
+      &.disabled {
+        border: solid 1px transparent;
+        opacity: 0.5;
+      }
+    }
+  }
+}

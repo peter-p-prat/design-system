@@ -1,0 +1,24 @@
+@use "sass:list";
+
+@mixin generateColorsJSExports($colors) {
+  $colors-list: ();
+
+  @each $color-name, $color-map in $colors {
+    $colors-list: list.append($colors-list, $color-name);
+
+    $new-color: ();
+
+    @each $key, $value in $color-map {
+      $color-key-value: #{$key}_#{$value};
+      $new-color: list.append($new-color, $color-key-value);
+    }
+
+    :export {
+      #{""+$color-name}: $new-color;
+    }
+  }
+
+  :export {
+    colors: $colors-list;
+  }
+}

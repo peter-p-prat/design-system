@@ -1,0 +1,16 @@
+{
+  "tabWidth": 2,
+  "printWidth": 140,
+  "trailingComma": "all",
+  "bracketSpacing": 0,
+  "arrowParens": "always",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js"],
+      "options": {
+        "tabWidth": 4
+      }
+    }
+  ]
+}

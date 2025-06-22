@@ -1,0 +1,4 @@
+@use "./colorDefinitions.scss" as definitions;
+@use "./mixins.scss" as mixins;
+
+@include mixins.generateColorsJSExports(definitions.$colors);

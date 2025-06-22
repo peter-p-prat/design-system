@@ -1,0 +1,5 @@
+@use "@app/Foundations/theme/colors";
+
+.buttonBackgroundWrapper {
+  background-color: colors.palette(neutral, black);
+}

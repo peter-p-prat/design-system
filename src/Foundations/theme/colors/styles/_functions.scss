@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "./colorDefinitions";
+
+/// Helper function to color elements
+/// @requires {Map} $colors - The colors palette map (colorDefinitions)
+/// @param {String} $color - The color group
+/// @param {Number | String} $value - The color variation
+/// @return {String} The color hexagesimal value
+/// @see $colors
+@function palette($color, $value) {
+  @if map.has-key(colorDefinitions.$colors, $color) {
+    $color-map: map.get(colorDefinitions.$colors, $color);
+    @if map.has-key($color-map, $value) {
+      $tone: map.get($color-map, $value);
+      @return $tone;
+    }
+
+    @warn "unknown tone `#{$value}` in color `#{$color}`";
+    @return null;
+  }
+
+  @warn "unknown color `#{$color}` in palette";
+  @return null;
+}
