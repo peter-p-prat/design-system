@@ -4,12 +4,18 @@ on:
   release:
     types: [created]
 
+permissions:
+  contents: read
+  packages: write
+
+env:
+  NODE_VERSION: "22"
+  NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
 jobs:
   publish-gpr:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
 
     steps:
       - name: Checking out repository
@@ -23,6 +29,7 @@ jobs:
         with:
           node-version: "20.x"
           registry-url: "https://npm.pkg.github.com"
+          scope: "@peter-p-prat"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -30,11 +37,12 @@ jobs:
       - name: Build package
         run: yarn build
 
-      - name: Configure npm for GitHub Packages
+      - name: Configure yarn
         run: |
-          echo "@peter-p-prat:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-          echo "always-auth=true" >> .npmrc
+          yarn config set npmRegistryServer "https://npm.pkg.github.com"
+          yarn config set npmScopes.peter-p-prat.npmRegistryServer "https://npm.pkg.github.com"
+          yarn config set npmScopes.peter-p-prat.npmAlwaysAuth true
+          yarn config set npmScopes.peter-p-prat.npmAuthToken $NPM_AUTH_TOKEN
 
       - name: Publish package
         run: yarn npm publish
