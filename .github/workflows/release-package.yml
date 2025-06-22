@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Publish Design System Package in NPM
 
 on:
   release:
@@ -8,12 +8,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checking out repository
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
           node-version: "20.x"
-      - run: yarn install --frozen-lockfile
-      - run: npm test
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Configure npm
+        run: |
+          echo "@peter-p-prat:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
+      - name: Build package
+        run: yarn build
 
   publish-gpr:
     needs: build
@@ -22,16 +37,19 @@ jobs:
       packages: write
       contents: read
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checking out repository
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
           node-version: "20.x"
-          registry-url: https://npm.pkg.github.com/
-      - run: yarn install --frozen-lockfile
-      - run: |
-          echo "@peter-p-prat:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-      - run: yarn build
-      - run: yarn publish
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Publish package
+        run: yarn npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
