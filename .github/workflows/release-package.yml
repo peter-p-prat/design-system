@@ -5,37 +5,12 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking out repository
-        uses: actions/checkout@v4
-
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Configure npm
-        run: |
-          echo "@peter-p-prat:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-
-      - name: Build package
-        run: yarn build
-
   publish-gpr:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
+
     steps:
       - name: Checking out repository
         uses: actions/checkout@v4
@@ -49,7 +24,19 @@ jobs:
           node-version: "20.x"
           registry-url: "https://npm.pkg.github.com"
 
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+
+      - name: Configure npm for GitHub Packages
+        run: |
+          echo "@peter-p-prat:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+
       - name: Publish package
         run: yarn npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
