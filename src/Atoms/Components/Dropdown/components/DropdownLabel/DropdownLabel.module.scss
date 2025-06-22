@@ -1,0 +1,23 @@
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/utils";
+
+.dropdownLabel {
+  display: flex;
+  align-items: center;
+  gap: spacing.gap(gap-3);
+  width: 100%;
+
+  &.onlyIcon {
+    margin-right: 10px;
+  }
+
+  .text {
+    user-select: none;
+    @include utils.clampText(1);
+  }
+
+  .icon {
+    justify-content: center;
+    height: 20px;
+  }
+}

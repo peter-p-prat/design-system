@@ -1,0 +1,27 @@
+@use "@app/Foundations/theme/colors";
+
+.dropdownWrapper {
+  width: 200px;
+
+  &.withBackground {
+    height: 300px;
+    width: 300px;
+    box-sizing: border-box;
+    padding: 0 50px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: #6200ee26;
+  }
+
+  &.light {
+    height: 300px;
+    width: 300px;
+    box-sizing: border-box;
+    padding: 0 50px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: colors.palette(primary, 500);
+  }
+}

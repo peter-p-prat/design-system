@@ -1,0 +1,230 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/blurs";
+@use "@app/Foundations/theme/animations";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/utils";
+
+.backdrop {
+  @include blurs.apply(sm, dark);
+  & {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: layout.get-z-index(dropdown-mobile);
+  }
+
+  &.desktopMode {
+    z-index: layout.get-z-index(dropdown-desktop);
+    position: absolute;
+    backdrop-filter: none;
+    background-color: transparent;
+    top: unset;
+
+    &.openToTop {
+      top: 0;
+      bottom: unset;
+    }
+  }
+
+  &.opened {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.dropdownListAndTooltipWrapper {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: spacing.gap(gap-5);
+  display: none;
+  @include animations.animation(growOut, 150ms, ease-in-out, 0s, 1, normal, forwards);
+
+  &:not(.desktopMode) {
+    @include breakpoints.media-breakpoint-down(desktop) {
+      @include layout.container();
+      display: none;
+      width: 100%;
+      max-height: 94lvh;
+      overflow: hidden;
+      margin-top: spacing.gap(gap-12);
+      margin-bottom: spacing.gap(gap-12);
+    }
+  }
+
+  &:not(.desktopMode) {
+    @include breakpoints.media-breakpoint-only(tablet) {
+      width: 370px;
+    }
+  }
+
+  &.desktopMode {
+    position: absolute;
+    top: 1px;
+    width: var(--desktop-width);
+    margin-top: spacing.gap(gap-1);
+
+    &.right {
+      right: 0;
+      left: unset;
+      transform-origin: top right;
+    }
+
+    &.left {
+      left: 0;
+      right: unset;
+      transform-origin: top left;
+    }
+
+    &.openToTop {
+      top: unset;
+      bottom: 1px;
+      flex-direction: column-reverse;
+      margin-bottom: spacing.gap(gap-1);
+    }
+
+    &.openToTop.right {
+      transform-origin: bottom right;
+    }
+
+    &.openToTop.left {
+      transform-origin: bottom left;
+    }
+
+    &.centerOpenAnimation {
+      &.right,
+      &.left {
+        transform-origin: top;
+      }
+
+      &.openToTop.right,
+      &.openToTop.left {
+        transform-origin: bottom;
+      }
+    }
+  }
+
+  &.opened {
+    display: flex;
+  }
+}
+
+.dropdownList,
+.dropdownListTooltip {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: colors.palette(neutral, white);
+  border-radius: spacing.gap(gap-3);
+}
+
+.dropdownList {
+  max-height: var(--desktop-max-height, 348px);
+  overflow: hidden;
+  color: colors.palette(gray, 500);
+  display: flex;
+  flex-direction: column;
+
+  &.desktopMode {
+    box-shadow: shadows.apply(2xl);
+  }
+}
+
+.dropdownListTooltip {
+  --tooltip-arrow-size: 6px;
+  --tooltip-arrow-color: #{colors.palette(bg, 1)};
+
+  position: relative;
+  padding: spacing.gap(gap-6) spacing.gap(gap-4);
+
+  &.desktopMode {
+    box-shadow: shadows.apply(xl);
+  }
+
+  &::before {
+    content: "";
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-width: var(--tooltip-arrow-size);
+    margin-left: calc(var(--tooltip-arrow-size) * -1);
+    bottom: 100%;
+    border-bottom-color: var(--tooltip-arrow-color);
+  }
+
+  &.openToTop {
+    &::before {
+      border-bottom-color: transparent;
+      bottom: unset;
+      top: 100%;
+      border-top-color: var(--tooltip-arrow-color);
+    }
+  }
+}
+
+.mobileTitle {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.gap(gap-2);
+  padding: spacing.gap(gap-4) spacing.gap(gap-6) spacing.gap(gap-4);
+
+  &.isScrolled {
+    border-bottom: 1px solid colors.palette(gray, 50);
+  }
+
+  .label {
+    @include typography.text(lg, medium);
+  }
+}
+
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.gap(gap-2);
+  min-height: 12px;
+  overflow-x: hidden;
+  margin: 0 0 spacing.gap(gap-4) 0;
+  padding: 0 spacing.gap(gap-2);
+
+  &:first-child:not(.desktopMode) {
+    margin-top: spacing.gap(gap-4);
+  }
+
+  &.desktopMode {
+    margin: spacing.gap(gap-2) 0;
+  }
+
+  // scrollbar
+  @extend %default-scrollbar;
+
+  &.withoutGap {
+    gap: 0;
+  }
+
+  &.withoutMarginBottom {
+    margin-bottom: 0;
+  }
+
+  &.withoutMarginRight {
+    margin-right: 0;
+  }
+}
+
+.actionsFooter {
+  display: flex;
+  outline: 1px solid colors.palette(gray, 50);
+
+  &.callToActionWrapper {
+    padding: spacing.gap(gap-2);
+  }
+}

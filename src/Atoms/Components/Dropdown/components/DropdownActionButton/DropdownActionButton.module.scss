@@ -1,0 +1,28 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+.actionButton {
+  @include typography.text(md, medium);
+  & {
+    height: spacing.gap(gap-14);
+    width: 100%;
+    color: colors.palette(buttons, 500);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &:first-child {
+    border-radius: 0 0 0 spacing.gap(gap-3);
+  }
+
+  &:last-child {
+    border-radius: 0 0 spacing.gap(gap-3) 0;
+  }
+
+  &.disabled {
+    color: colors.palette(buttons, 100);
+    cursor: not-allowed;
+  }
+}
