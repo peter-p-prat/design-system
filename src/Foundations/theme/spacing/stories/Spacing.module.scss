@@ -1,0 +1,47 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include typography.heading(md);
+}
+
+.groupTitle {
+  @include typography.heading(sm);
+}
+
+.list {
+  @include typography.text(md);
+}
+
+.spacingVariation {
+  display: flex;
+  gap: spacing.gap(gap-2);
+}
+
+.spacing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .spacingLabel {
+    @include typography.text(sm);
+    & {
+      margin-right: spacing.gap(gap-2);
+    }
+  }
+
+  .spacingSample {
+    width: 24px;
+    height: var(--padding);
+    box-sizing: border-box;
+    background-color: colors.palette(primary, 25);
+    border: dashed 1px colors.palette(primary, 500);
+    border-radius: 2px;
+  }
+}

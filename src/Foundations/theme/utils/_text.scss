@@ -1,0 +1,10 @@
+@mixin clampText($line-number: 2) {
+  & {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: $line-number;
+    -webkit-box-orient: vertical;
+  }
+}

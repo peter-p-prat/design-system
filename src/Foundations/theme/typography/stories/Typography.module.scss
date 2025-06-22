@@ -1,0 +1,92 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography/styles/mixins" as typographyMixins;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include typography.heading(md);
+}
+
+.subtitle {
+  margin: spacing.gap(gap-12) 0 0;
+  @include typography.heading(sm, medium);
+}
+
+.groupTitle {
+  @include typography.text(md);
+}
+
+.fontsDemo {
+  display: flex;
+  align-items: start;
+  gap: spacing.gap(gap-18);
+  padding: spacing.gap(gap-6) 0;
+  border-bottom: colors.palette(primary, 100) solid 1px;
+
+  .fontsDemoName {
+    size: 24px;
+  }
+
+  .fontsDemoSample {
+    font-size: 60px;
+    margin: spacing.gap(gap-2) 0 0;
+  }
+}
+
+.plusJakartaDemo {
+  @include typography.heading(md, regular) {
+    & {
+      font-size: 20px;
+      line-height: 1;
+    }
+  }
+}
+
+.satoshiDemo {
+  @include typography.text(md, regular) {
+    & {
+      font-size: 20px;
+      line-height: 1;
+    }
+  }
+}
+
+.typographyGroup {
+  border-bottom: solid 1px colors.palette(primary, 100);
+  padding-bottom: spacing.gap(gap-5);
+  display: flex;
+  column-gap: spacing.gap(gap-8);
+  .groupTitle {
+    margin-bottom: 0;
+  }
+}
+
+.typographyData {
+  .typographySample {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .typographyLabel {
+    @include typography.text(sm);
+    & {
+      padding-top: spacing.gap(gap-2);
+    }
+  }
+
+  $headings-names: (2xl, xl, lg, md, sm, xs);
+  $headings-weights-names: (regular, medium, semi-bold, bold, extra-bold);
+
+  $texts-names: (xl, lg, md, sm, xs, xxs);
+  $texts-weights-names: (regular, medium, bold, extra-bold);
+
+  @include typographyMixins.generateClasses(headings, $headings-names, $headings-weights-names);
+  @include typographyMixins.generateClasses(texts, $texts-names, $texts-weights-names);
+}

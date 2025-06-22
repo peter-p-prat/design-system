@@ -1,0 +1,44 @@
+@use "sass:list";
+@use "@app/Foundations/theme/typography";
+
+@mixin generateClasses($type: headings, $names, $weights) {
+  @for $i from 1 through list.length($names) {
+    $size-name: list.nth($names, $i);
+    @for $i from 1 through list.length($weights) {
+      $weight-name: list.nth($weights, $i);
+      .#{$type}-#{$size-name}-#{$weight-name} {
+        @if $type == headings {
+          @include typography.heading($size-name, $weight-name);
+        } @else {
+          @include typography.text($size-name, $weight-name);
+        }
+        & {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin generateTypographyJSExports($typography) {
+  $typography-list: ();
+
+  @each $typography-name, $typography-map in $typography {
+    $typography-list: list.append($typography-list, $typography-name);
+
+    $new-typo: ();
+
+    @each $key, $value in $typography-map {
+      $typo-key-value: #{$key}_#{$value};
+      $new-typo: list.append($new-typo, $typo-key-value);
+    }
+
+    :export {
+      #{$typography-name}: $new-typo;
+    }
+  }
+
+  :export {
+    variants: $typography-list;
+  }
+}

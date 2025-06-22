@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "sass:list";
+
+/// Map of blur sizes
+$blurs-map: ();
+$default-spacing-size: 4;
+$blurs-names-list: (sm, md, lg, xl);
+
+@for $i from 1 through 4 {
+  $blur-name: list.nth($blurs-names-list, $i);
+  $blur-value: #{$i * $default-spacing-size}px;
+  $blurs-map: map.merge(
+    $blurs-map,
+    (
+      $blur-name: $blur-value,
+    )
+  );
+}
+
+/// Map of blurs used only for Storybook
+$blurs: (
+  light: $blurs-map,
+  dark: $blurs-map,
+  bg: $blurs-map,
+);

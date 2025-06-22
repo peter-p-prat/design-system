@@ -1,0 +1,27 @@
+@use "sass:map";
+
+/// Map of spacing sizes
+$spacing-map: ();
+$default-spacing-size: 4;
+
+@for $i from 0 through 80 {
+  // Loop through 80 to reach 320px gap size
+  $gap-name: gap-#{$i};
+  $gap-value: 0px;
+
+  @if $i > 0 {
+    $gap-value: #{$i * $default-spacing-size}px;
+  }
+
+  $spacing-map: map.merge(
+    $spacing-map,
+    (
+      $gap-name: $gap-value,
+    )
+  );
+}
+
+// Map of spacings used only for Storybook
+$spacings: (
+  gaps: $spacing-map,
+);

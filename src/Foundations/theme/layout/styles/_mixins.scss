@@ -1,0 +1,72 @@
+@use "../../breakpoints";
+@use "../../spacing";
+@use "../variables/z-indexes";
+@use "../variables/heights";
+
+/// Mixin to obtain website & webapp content container styles
+/// @return The content width and margins for each device
+@mixin container() {
+  display: block;
+  margin: 0 spacing.gap(gap-4);
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    margin: 0 spacing.gap(gap-8);
+  }
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    width: 1140px;
+    margin: 0 auto;
+  }
+
+  @content;
+}
+
+/// Mixin to obtain website & webapp header container styles
+/// @return The positioning properties (not dimensions)
+@mixin header() {
+  & {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: z-indexes.get-z-index(header);
+  }
+
+  @content;
+}
+
+/// Mixin to obtain website & webapp footer container styles
+/// @return The positioning properties (not dimensions)
+@mixin footer() {
+  & {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @content;
+}
+
+/// Mixin to obtain webapp navigation bar container styles
+/// @return The positioning properties (not dimensions)
+@mixin nav-bar() {
+  & {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: z-indexes.get-z-index(nav-bar);
+    height: heights.get-layout-heights(webapp, nav, mobile);
+  }
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    height: heights.get-layout-heights(webapp, nav, tablet);
+  }
+
+  @include breakpoints.media-breakpoint-up(desktop) {
+    display: none;
+  }
+
+  @content;
+}

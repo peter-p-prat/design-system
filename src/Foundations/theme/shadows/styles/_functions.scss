@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "./shadowsDefinitions";
+
+/// Helper function to set a shadow value
+/// @requires {Map} $shadows-map - The shawdows map from shadowsDefinitions
+/// @param {String} $shadow-name - The shadow name to apply
+/// @return {String} The shadow value
+@function apply($shadow-name) {
+  @if map.has-key(shadowsDefinitions.$shadows-map, $shadow-name) {
+    $shadow: map.get(shadowsDefinitions.$shadows-map, $shadow-name);
+    @return #{$shadow};
+  }
+
+  @warn "unknown shadow name: #{$shadow-name}, in shadows map";
+  @return null;
+}

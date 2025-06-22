@@ -1,0 +1,24 @@
+@use "sass:list";
+
+@mixin generateSpacingJSExports($spacings) {
+  $spacing-list: ();
+
+  @each $spacing-name, $spacing-map in $spacings {
+    $spacing-list: list.append($spacing-list, $spacing-name);
+
+    $new-spacing: ();
+
+    @each $key, $value in $spacing-map {
+      $spacing-key-value: #{$key}_#{$value};
+      $new-spacing: list.append($new-spacing, $spacing-key-value);
+    }
+
+    :export {
+      #{$spacing-name}: $new-spacing;
+    }
+  }
+
+  :export {
+    spacings: $spacing-list;
+  }
+}

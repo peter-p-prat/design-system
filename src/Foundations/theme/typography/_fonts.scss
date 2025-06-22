@@ -1,0 +1,91 @@
+$font-path: "@rewardsweb/design-system/dist/fonts";
+
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("#{$font-path}/SatoshiRegular.woff2") format("woff2"),
+    url("#{$font-path}/SatoshiRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("#{$font-path}/SatoshiMedium.woff2") format("woff2"),
+    url("#{$font-path}/SatoshiMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("#{$font-path}/SatoshiBold.woff2") format("woff2"),
+    url("#{$font-path}/SatoshiBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("#{$font-path}/SatoshiExtraBold.woff2") format("woff2"),
+    url("#{$font-path}/SatoshiExtraBold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus-Jakarta";
+  src:
+    url("#{$font-path}/PlusJakartaSansRegular.woff2") format("woff2"),
+    url("#{$font-path}/PlusJakartaSansRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus-Jakarta";
+  src:
+    url("#{$font-path}/PlusJakartaSansMedium.woff2") format("woff2"),
+    url("#{$font-path}/PlusJakartaSansMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus-Jakarta";
+  src:
+    url("#{$font-path}/PlusJakartaSansSemiBold.woff2") format("woff2"),
+    url("#{$font-path}/PlusJakartaSansSemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus-Jakarta";
+  src:
+    url("#{$font-path}/PlusJakartaSansBold.woff2") format("woff2"),
+    url("#{$font-path}/PlusJakartaSansBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus-Jakarta";
+  src:
+    url("#{$font-path}/PlusJakartaSansExtraBold.woff2") format("woff2"),
+    url("#{$font-path}/PlusJakartaSansExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

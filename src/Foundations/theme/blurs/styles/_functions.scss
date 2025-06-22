@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "./blursDefinitions";
+
+/// Helper function to set a blur value
+/// @requires {Map} $blurs-map - The blurs map from blursDefinitions
+/// @param {String} $blur-size - The blur size to apply
+/// @return {String} The blur value
+@function setBlurValue($blur-size) {
+  @if map.has-key(blursDefinitions.$blurs-map, $blur-size) {
+    $blur: map.get(blursDefinitions.$blurs-map, $blur-size);
+    @return $blur;
+  }
+
+  @warn "unknown blur size: #{$blur-size}, in blurs map";
+  @return null;
+}

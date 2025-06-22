@@ -1,0 +1,64 @@
+@use "../../utils/maps";
+
+$_landing-header: (
+  mobile: 56px,
+  tablet: 72px,
+  desktop: 72px,
+);
+
+$_landing-footer: (
+  mobile: 1080px,
+  tablet: 481px,
+  desktop: 392px,
+);
+
+$_landing-nav: (
+  mobile: 0,
+  tablet: 0,
+  desktop: 0,
+);
+
+$_webapp-header: (
+  mobile: 54px,
+  tablet: 112px,
+  desktop: 112px,
+);
+
+$_webapp-footer: (
+  mobile: 0,
+  tablet: 0,
+  desktop: 392px,
+);
+
+$_webapp-nav: (
+  mobile: 64px,
+  tablet: 72px,
+  desktop: 0,
+);
+
+$_landing: (
+  header: $_landing-header,
+  footer: $_landing-footer,
+  nav: $_landing-nav,
+);
+
+$_webapp: (
+  header: $_webapp-header,
+  footer: $_webapp-footer,
+  nav: $_webapp-nav,
+);
+
+
+$_apps: (
+  landing: $_landing,
+  webapp: $_webapp,
+);
+
+/// function to get landing & webapp layout components -header, footer & navbar- heights for each device
+/// @param {String} $app - The app for which the component height is being requested
+/// @param {String} $component - The component whose height is being requested
+/// @param {String} $device - The device for which the component height is being requested (desktop, tablet or mobile)
+/// @return {String} The height value in px
+@function get-layout-heights($app, $component, $device) {
+  @return maps.get-from-map(maps.get-from-map(maps.get-from-map($_apps, $app), $component), $device);
+}

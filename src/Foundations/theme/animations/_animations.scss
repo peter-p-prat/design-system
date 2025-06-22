@@ -1,0 +1,53 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes growOut {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes growOutWithoutBounce {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/// Mixin to generate an animation from the animations keyframes defined
+/// @requires {String} $name - The animation name defined from the keyframs
+/// @param {String} $duration [1s] - The duration of the animation
+/// @param {String} $timing-function [ease] - How animation progresses through the cycle
+/// @param {String} $delay [0s] - The delay before the animation starts
+/// @param {String} $iteration-count [1] - The number of times the animation should be played
+/// @param {String} $direction [normal] - The direction of the animation should be played in the sequence
+/// @param {String} $fill-mode [forwards] - How animation applies styles to its targets before and after its execution
+@mixin animation($name, $duration: 1s, $timing-function: ease, $delay: 0s, $iteration-count: 1, $direction: normal, $fill-mode: forwards) {
+  & {
+    animation: $name $duration $timing-function $delay $iteration-count $direction $fill-mode;
+  }
+}

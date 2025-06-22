@@ -1,0 +1,4 @@
+@use "./typographyDefinitions";
+@use "./mixins";
+
+@include mixins.generateTypographyJSExports(typographyDefinitions.$typography);

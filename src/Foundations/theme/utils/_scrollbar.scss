@@ -1,0 +1,28 @@
+@use "../colors";
+@use "../spacing";
+
+%default-scrollbar {
+  &::-webkit-scrollbar {
+    width: spacing.gap(gap-4);
+    height: spacing.gap(gap-4);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: spacing.gap(gap-2);
+    background-color: colors.palette(primary, 500);
+    border: 5px solid white;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: white;
+  }
+}
+
+%no-scrollbar {
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+}

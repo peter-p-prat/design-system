@@ -1,0 +1,59 @@
+@use "sass:list";
+@use "./functions";
+@use "../../colors";
+
+/// Mixin to define the blur style
+/// @param {String} $size [md] - The blur size (sm | md | lg | xl)
+/// @param {String} $color-variant [light] - The background color to apply (light | dark)
+@mixin apply($size: md, $color-variant: light) {
+  $blur-size: functions.setBlurValue($size);
+
+  @if $color-variant != light and $color-variant != dark and $color-variant != bg {
+    @warn "Unknown color variant for a blur type: #{$color-variant}. The available variants are: light, dark & bg.";
+  }
+
+  & {
+    @if $blur-size != null {
+      @if $color-variant == dark {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      @if $color-variant == light {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      @if $color-variant == bg {
+        background-color: colors.palette(bg, 4);
+        opacity: 0.6;
+      }
+
+      backdrop-filter: blur($blur-size);
+      -webkit-backdrop-filter: blur($blur-size);
+    }
+  }
+
+  @content;
+}
+
+@mixin generateBlursJSExports($blurs) {
+  $blurs-list: ();
+
+  @each $blur-name, $blur-map in $blurs {
+    $blurs-list: list.append($blurs-list, $blur-name);
+
+    $new-blur: ();
+
+    @each $key, $value in $blur-map {
+      $blur-key-value: #{$key}_#{$value};
+      $new-blur: list.append($new-blur, $blur-key-value);
+    }
+
+    :export {
+      #{$blur-name}: $new-blur;
+    }
+  }
+
+  :export {
+    blurs: $blurs-list;
+  }
+}

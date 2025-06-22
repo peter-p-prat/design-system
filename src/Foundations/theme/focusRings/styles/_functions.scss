@@ -1,0 +1,17 @@
+@use "@app/Foundations/theme/colors";
+
+/// Helper function to generate focus rings to be applied as box-shadow
+/// @name focusRings
+/// @requires {Function} colors - The colors palette function
+/// @param {String} $color - The color group
+/// @param {Number | String} $value - The color variation
+/// @return {String} The box-shadow value
+/// @see $colors
+@function apply($color, $value, $size: 4px) {
+  @if $size == 4px {
+    @return 0px 0px 0px 4px colors.palette($color, $value);
+  }
+
+  @warn "unknown size `#{$size}` in focusRings definition`";
+  @return null;
+}

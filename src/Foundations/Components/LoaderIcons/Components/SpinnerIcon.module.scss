@@ -1,0 +1,47 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/animations";
+
+.spinner {
+  @include animations.animation(spin, $iteration-count: infinite);
+  & {
+    stroke: var(--color, colors.palette(primary, 500));
+  }
+}
+
+.spinnerBackground {
+  stroke: var(--background-color, colors.palette(primary, 50));
+}
+
+.dotSpinnerContainer {
+  display: flex;
+}
+
+.dotSpinner {
+  @include animations.animation(spin, $duration: 1.5s, $timing-function: linear, $iteration-count: infinite);
+
+  & {
+    width: 100%;
+    aspect-ratio: 1;
+    display: grid;
+    -webkit-mask: conic-gradient(from 15deg, rgba(black, 0), black);
+    mask: conic-gradient(from 15deg, rgba(black, 0), black);
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    grid-area: 1/1;
+    transform: rotate(30deg);
+  }
+  &:after {
+    transform: rotate(60deg);
+  }
+}
+
+.dotSpinner,
+.dotSpinner:before,
+.dotSpinner:after {
+  background:
+    radial-gradient(closest-side at 50% 12.5%, var(--color, colors.palette(primary, 500)) 90%, rgba(black, 0) 98%) 50% 0/20% 80% repeat-y,
+    radial-gradient(closest-side at 12.5% 50%, var(--color, colors.palette(primary, 500)) 90%, rgba(black, 0) 98%) 0 50%/80% 20% repeat-x;
+}

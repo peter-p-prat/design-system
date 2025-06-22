@@ -1,15 +1,13 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type {Meta, StoryObj} from "@storybook/react-vite";
 
-import {Icon, IconProps, IconsNames, icons} from "@app/Foundations";
+import {IconProps, icons, IconsNames} from "@app/Foundations";
+
+import IconSearch from "./IconSearch/IconSearch";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
     title: "Foundations/Icon",
-    component: Icon,
-    parameters: {
-        // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-        layout: "centered",
-    },
+    component: IconSearch,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
     tags: ["autodocs"],
     // More on argTypes: https://storybook.js.org/docs/api/argtypes
@@ -92,6 +90,6 @@ export const WithCustomSize: Story = {
     args: {
         title: "With custom size",
         name: IconsNames.USER_03,
-        size: 55,
+        size: 30,
     },
 };

@@ -1,0 +1,40 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include typography.heading(md);
+}
+
+.groupTitle {
+  @include typography.heading(sm);
+}
+
+.shadowVariation {
+  display: flex;
+  gap: spacing.gap(gap-12);
+}
+
+.shadow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .shadowLabel {
+    @include typography.text(sm);
+  }
+
+  .shadowSample {
+    width: 160px;
+    height: 160px;
+    box-sizing: border-box;
+    background-color: colors.palette(neutral, white);
+    border-radius: spacing.gap(gap-2);
+    box-shadow: var(--shadow);
+  }
+}

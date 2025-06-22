@@ -1,0 +1,28 @@
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.iconSearch {
+  display: flex;
+  flex-direction: column;
+
+  .searchContainer {
+    margin-bottom: spacing.gap(gap-2);
+  }
+
+  .iconsContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: spacing.gap(gap-2);
+  }
+
+  .iconContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: spacing.gap(gap-2);
+  }
+
+  .iconName {
+    @include typography.text(xxs, bold);
+  }
+}

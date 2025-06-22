@@ -1,0 +1,23 @@
+@use "../../utils/maps";
+
+$_z-indexes: (
+  "button-label": 1,
+  "button-overlay": 2,
+  "message": 3,
+  "nav-bar": 4,
+  "dropdown-desktop": 4,
+  "modal-under-header": 5,
+  "header": 6,
+  "footer": 6,
+  "dropdown-mobile": 7,
+  "modal-overlay": 9,
+  "modal": 10,
+  "full-screen-loader": 100,
+);
+
+/// Function to get the z-index value for the different components
+/// @param {String} $component - The name of the component based on the variable _z-indexes to get the z-index value
+/// @return {String} The z-index value
+@function get-z-index($component) {
+  @return maps.get-from-map($_z-indexes, $component);
+}

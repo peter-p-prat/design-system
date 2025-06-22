@@ -1,0 +1,74 @@
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/focusRings";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include typography.heading(md);
+}
+
+.groupTitle {
+  @include typography.heading(sm);
+}
+
+.subGroupWrapper {
+  padding: 40px 0;
+}
+
+.subGroupTitle {
+  @include typography.heading(xs);
+  & {
+    margin-top: 0;
+  }
+}
+
+.focusRingsGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.focusRingDemo {
+  .focusRingLabel {
+    @include typography.text(sm);
+  }
+
+  .primary100 {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    box-shadow: focusRings.apply(primary, 25);
+  }
+
+  .error100 {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    box-shadow: focusRings.apply(error, 50);
+  }
+
+  .gray100 {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    box-shadow: focusRings.apply(gray, 50);
+  }
+
+  .primary500 {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    box-shadow: focusRings.apply(primary, 200);
+  }
+
+  .gray500 {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    box-shadow: focusRings.apply(gray, 300);
+  }
+}

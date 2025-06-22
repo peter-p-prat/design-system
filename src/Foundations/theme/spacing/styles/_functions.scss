@@ -1,0 +1,42 @@
+@use "sass:map";
+@use "./spacingDefinitions";
+@use "../../utils/casting";
+
+/// Helper function to set a spacing value
+/// @requires {Map} $spacing-map - The spacings map from spacingDefinitions
+/// @param {String} $gap-name - The gap name to apply
+/// @return {String} The gap value in pixels
+@function gap($gap-name) {
+  @if map.has-key(spacingDefinitions.$spacing-map, $gap-name) {
+    $gap: map.get(spacingDefinitions.$spacing-map, $gap-name);
+    @return $gap;
+  }
+
+  @warn "unknown gap: #{$gap-name}, in spacings map";
+  @return null;
+}
+
+/// Helper function to set a custom spacing value
+/// @requires {Map} $spacing-map - The spacings map from spacingDefinitions
+/// @param {String} $gap-name - The gap name to apply
+/// @param {Number} $custom-spacing-size - The cusstom amount to add to the gap
+/// @return {String} The custom gap value in pixels
+@function customGap($gap-name, $custom-spacing-size) {
+  $gap: 0;
+
+  @if map.has-key(spacingDefinitions.$spacing-map, $gap-name) {
+    $gap: map.get(spacingDefinitions.$spacing-map, $gap-name);
+  } @else {
+    @warn "unknown gap: #{$gap-name}, in spacings map";
+  }
+
+  @if $custom-spacing-size == null or type-of($custom-spacing-size) != number {
+    @warn "custom-spacing-size is required and must be a number";
+    @return $gap;
+  }
+
+  $gap-string-value: str-slice($gap, 1, 2);
+  $gap-number-value: casting.toNumber($gap-string-value);
+
+  @return #{calc($gap-number-value + $custom-spacing-size)}px;
+}

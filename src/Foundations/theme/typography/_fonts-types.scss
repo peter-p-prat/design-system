@@ -1,0 +1,102 @@
+@use "./fonts";
+
+/// Mixin to obtain text typography properties
+/// @param {String} $size [md] - The text size (xl | lg | md | sm | xs | xxs)
+/// @param {String} $weight [regular] - The font weight (regular | medium | bold | extra-bold)
+/// @param {String} $style [normal] - The font style (italic | normal)
+@mixin text($size: md, $weight: regular, $style: normal) {
+  & {
+    font-family: "Satoshi";
+
+    @if $size == xl {
+      font-size: 20px;
+      line-height: 30px;
+    } @else if $size == lg {
+      font-size: 18px;
+      line-height: 28px;
+    } @else if $size == md {
+      font-size: 16px;
+      line-height: 24px;
+    } @else if $size == sm {
+      font-size: 14px;
+      line-height: 20px;
+    } @else if $size == xs {
+      font-size: 12px;
+      line-height: 18px;
+    } @else if $size == xxs {
+      font-size: 10px;
+      line-height: 13.5px;
+    } @else {
+      @error "Unknown size for a text type: #{$size}. The available sizes are: xl, lg, md, sm, xs & xxs.";
+    }
+
+    @if $weight == regular {
+      font-weight: 400;
+    } @else if $weight == medium {
+      font-weight: 500;
+    } @else if $weight == bold {
+      font-weight: 700;
+    } @else if $weight == extra-bold {
+      font-weight: 900;
+    } @else {
+      @error "Unknown weight for a text type: #{$weight}. The available weights are: regular, medium, bold, extra-bold.";
+    }
+
+    @if $style == normal {
+      font-style: normal;
+    } @else if $style == italic {
+      font-style: italic;
+    } @else {
+      @error "Unknown style for a text type: #{$style}. The available styles are: normal & italic.";
+    }
+  }
+
+  @content;
+}
+
+/// Mixin to obtain heading typography properties
+/// @param {String} $size [md] - The heading size (2xl | xl | lg | md | sm | xs)
+/// @param {String} $weight [regular] - The font weight (regular | medium | semi-bold | bold | extra-bold)
+@mixin heading($size: md, $weight: regular) {
+  & {
+    font-family: "Plus-Jakarta";
+
+    @if $size == 2xl {
+      font-size: 72px;
+      line-height: 90px;
+    } @else if $size == xl {
+      font-size: 60px;
+      line-height: 72px;
+    } @else if $size == lg {
+      font-size: 48px;
+      line-height: 60px;
+    } @else if $size == md {
+      font-size: 36px;
+      line-height: 44px;
+    } @else if $size == sm {
+      font-size: 30px;
+      line-height: 38px;
+    } @else if $size == xs {
+      font-size: 24px;
+      line-height: 32px;
+    } @else {
+      @error "Unknown size for a heading type: #{$size}. The available sizes are: 2xl, xl, lg, md, sm & xs.";
+    }
+
+    @if $weight == regular {
+      font-weight: 400;
+    } @else if $weight == medium {
+      font-weight: 500;
+    } @else if $weight == semi-bold {
+      font-weight: 600;
+    } @else if $weight == bold {
+      font-weight: 700;
+    } @else if $weight == extra-bold {
+      font-weight: 800;
+    } @else {
+      @error "Unknown weight for a heading type: #{$weight}. The available weights are: regular, medium, semi-bold, bold & extra-bold.";
+    }
+  }
+
+  @content;
+}

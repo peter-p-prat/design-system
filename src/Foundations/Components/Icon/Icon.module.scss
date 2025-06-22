@@ -1,18 +1,18 @@
 @use "@app/Foundations/theme/colors";
 
 .icon {
-    display: inline-flex;
-    align-items: center;
+  display: inline-flex;
+  align-items: center;
 
-    &.withInlineColors {
-        svg path {
-            fill: var(--icon-fill-color);
-            stroke: var(--icon-stroke-color, colors.palette(neutral, black));
-        }
+  &.withInlineColors {
+    svg path {
+      fill: var(--icon-fill-color);
+      stroke: var(--icon-stroke-color, colors.palette(neutral, black));
     }
+  }
 
-    svg {
-        display: block;
-        height: var(--icon-size, 16px);
-    }
+  svg {
+    display: block;
+    height: var(--icon-size, 24px);
+  }
 }

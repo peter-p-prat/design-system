@@ -1,0 +1,24 @@
+@use "sass:list";
+
+@mixin generateShadowsJSExports($shadows) {
+  $shadows-list: ();
+
+  @each $shadow-name, $shadow-map in $shadows {
+    $shadows-list: list.append($shadows-list, $shadow-name);
+
+    $new-shadow: ();
+
+    @each $key, $value in $shadow-map {
+      $shadow-key-value: #{$key}_#{$value}__;
+      $new-shadow: list.append($new-shadow, $shadow-key-value);
+    }
+
+    :export {
+      #{$shadow-name}: $new-shadow;
+    }
+  }
+
+  :export {
+    shadows: $shadows-list;
+  }
+}

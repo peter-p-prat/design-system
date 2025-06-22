@@ -1,0 +1,144 @@
+@use "@app/Foundations/theme/blurs";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+.title {
+  @include typography.heading(md);
+}
+
+.groupTitle {
+  @include typography.heading(sm);
+}
+
+.blurVariationWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: spacing.gap(gap-8);
+  padding: spacing.gap(gap-10) spacing.gap(gap-5);
+  background: {
+    image: url("../assets/wrapper-bg.jpg");
+    size: cover;
+    repeat: no-repeat;
+  }
+}
+
+.blurVariation {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: spacing.gap(gap-4);
+}
+
+.blur {
+  display: flex;
+  flex-direction: column;
+
+  .blurLabel {
+    @include typography.text(sm, bold);
+    & {
+      z-index: 1;
+    }
+  }
+
+  .blurSample {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: spacing.gap(gap-2);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    &.sm {
+      &.dark {
+        &::before {
+          @include blurs.apply(sm, dark);
+        }
+      }
+
+      &.light {
+        &::before {
+          @include blurs.apply(sm, light);
+        }
+      }
+
+      &.bg {
+        &::before {
+          @include blurs.apply(sm, bg);
+        }
+      }
+    }
+
+    &.md {
+      &.dark {
+        &::before {
+          @include blurs.apply(md, dark);
+        }
+      }
+
+      &.light {
+        &::before {
+          @include blurs.apply(md, light);
+        }
+      }
+
+      &.bg {
+        &::before {
+          @include blurs.apply(md, bg);
+        }
+      }
+    }
+
+    &.lg {
+      &.dark {
+        &::before {
+          @include blurs.apply(lg, dark);
+        }
+      }
+
+      &.light {
+        &::before {
+          @include blurs.apply(lg, light);
+        }
+      }
+
+      &.bg {
+        &::before {
+          @include blurs.apply(lg, bg);
+        }
+      }
+    }
+
+    &.xl {
+      &.dark {
+        &::before {
+          @include blurs.apply(xl, dark);
+        }
+      }
+
+      &.light {
+        &::before {
+          @include blurs.apply(xl, light);
+        }
+      }
+
+      &.bg {
+        &::before {
+          @include blurs.apply(xl, bg);
+        }
+      }
+    }
+  }
+}
