@@ -1,0 +1,17 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.chipWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: spacing.gap(gap-6);
+  padding: spacing.gap(gap-6);
+  border-radius: spacing.gap(gap-1);
+  transition: all 200ms ease-in-out;
+
+  &.dark {
+    background-color: colors.palette(neutral, black);
+    color: colors.palette(neutral, white);
+  }
+}

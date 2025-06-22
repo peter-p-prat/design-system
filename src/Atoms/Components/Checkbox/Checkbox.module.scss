@@ -1,0 +1,99 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: spacing.gap(gap-3);
+  width: fit-content;
+  cursor: pointer;
+
+  &.leadingLabel {
+    flex-direction: row-reverse;
+  }
+}
+
+.check {
+  position: relative;
+  min-width: var(--size, spacing.gap(gap-4));
+  height: var(--size, spacing.gap(gap-4));
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: spacing.gap(gap-1);
+  background-color: transparent;
+  color: colors.palette(neutral, white);
+  transition: all ease 250ms;
+  cursor: pointer;
+
+  &.default {
+    border: 1px solid colors.palette(gray, 100);
+  }
+
+  &.light {
+    border: 1px solid colors.palette(primary, 100);
+  }
+
+  &.checked {
+    background-color: colors.palette(primary, 500);
+
+    &.default {
+      border-color: colors.palette(primary, 500);
+    }
+
+    &:hover {
+      background-color: colors.palette(primary, 700);
+
+      &.default {
+        border-color: colors.palette(primary, 700);
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    background-color: transparent;
+
+    &.default {
+      border-color: colors.palette(gray, 50);
+    }
+
+    &.light {
+      border: 1px solid colors.palette(primary, 400);
+    }
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+
+    &:default {
+      pointer-events: none;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.label {
+  @include typography.text();
+
+  &.default {
+    color: inherit;
+  }
+
+  &.light {
+    color: colors.palette(neutral, white);
+  }
+}

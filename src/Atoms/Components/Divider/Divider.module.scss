@@ -1,0 +1,32 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.divider {
+  &.horizontal {
+    width: 100%;
+  }
+
+  &.vertical {
+    height: 100%;
+    display: flex;
+  }
+
+  &Line {
+    position: relative;
+    margin: var(--spacing, 0);
+    border-color: var(--color, colors.palette(gray, 50));
+    border-style: var(--border-style, solid);
+
+    &.horizontal {
+      width: calc(var(--divider-container-width, "100%") - 2 * var(--spacing, 0));
+      height: 0;
+      border-width: var(--divider-width, 1px) 0 0 0;
+    }
+
+    &.vertical {
+      width: 0;
+      height: calc(var(--divider-container-width, "100%") - 2 * var(--spacing, 0));
+      border-width: 0 var(--divider-width, 1px) 0 0;
+    }
+  }
+}

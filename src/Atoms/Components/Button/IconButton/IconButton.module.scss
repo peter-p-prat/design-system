@@ -1,0 +1,26 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/layout";
+
+.iconButton {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 200ms ease-in-out;
+  background-color: transparent;
+  color: var(--color, colors.palette(buttons, 500));
+
+  .icon {
+    position: relative;
+    z-index: layout.get-z-index(button-label);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,14 @@
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.copyButtonStory {
+  display: flex;
+  align-items: center;
+
+  .text {
+    @include typography.text(md, regular);
+    & {
+      margin-right: spacing.gap(gap-2);
+    }
+  }
+}

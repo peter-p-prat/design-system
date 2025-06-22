@@ -1,0 +1,606 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/layout";
+@use "./util";
+
+.chip {
+  @include typography.text(sm, medium);
+  & {
+    border-radius: spacing.gap(gap-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: spacing.gap(gap-2);
+    width: fit-content;
+    cursor: default;
+    position: relative;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + calc(util.$chip-border-width * 2));
+    height: calc(100% + calc(util.$chip-border-width * 2));
+    left: calc(util.$chip-border-width * -1);
+    top: calc(util.$chip-border-width * -1);
+    border-radius: spacing.gap(gap-1);
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.rounded {
+    border-radius: spacing.gap(gap-12);
+  }
+
+  &.squared {
+    border-radius: spacing.gap(gap-1);
+  }
+
+  &.inactive {
+    opacity: 0.7;
+  }
+
+  &.filled {
+    &:hover {
+      &::before {
+        opacity: 0.4;
+      }
+    }
+
+    &:active {
+      &::before {
+        opacity: 0.2;
+      }
+    }
+
+    @include util.generateChipDefaultColorsVariant("filled");
+
+    &.red {
+      background-color: colors.palette(error, 500);
+      color: colors.palette(neutral, white);
+      border: util.$chip-border-width solid colors.palette(error, 500);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(error, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(error, 25);
+          }
+        }
+      }
+    }
+
+    &.yellow {
+      background-color: colors.palette(warning, 500);
+      color: colors.palette(neutral, white);
+      border: util.$chip-border-width solid colors.palette(warning, 500);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(warning, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(warning, 25);
+          }
+        }
+      }
+    }
+
+    &.green {
+      background-color: colors.palette(success, 500);
+      color: colors.palette(neutral, white);
+      border: util.$chip-border-width solid colors.palette(success, 500);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(success, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(success, 25);
+          }
+        }
+      }
+    }
+
+    &.blue {
+      background-color: colors.palette(progress, 500);
+      color: colors.palette(neutral, white);
+      border: util.$chip-border-width solid colors.palette(progress, 500);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(success, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(success, 25);
+          }
+        }
+      }
+    }
+
+    &.white {
+      background-color: colors.palette(neutral, white);
+      color: inherit;
+      border: util.$chip-border-width solid colors.palette(neutral, white);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(gray, 100);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(gray, 100);
+          }
+        }
+      }
+    }
+
+    &.gray {
+      background-color: colors.palette(gray, 400);
+      color: colors.palette(neutral, white);
+      border: util.$chip-border-width solid colors.palette(gray, 400);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(gray, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(gray, 25);
+          }
+        }
+      }
+    }
+  }
+
+  &.filled-light {
+    &:hover {
+      &::before {
+        opacity: 0.08;
+      }
+    }
+
+    &:active {
+      &::before {
+        opacity: 0.2;
+      }
+    }
+
+    @include util.generateChipDefaultColorsVariant("filled-light");
+
+    &.red {
+      color: colors.palette(error, 500);
+      background-color: colors.palette(error, 50);
+      border: util.$chip-border-width solid colors.palette(error, 100);
+
+      &.inactive {
+        color: colors.palette(error, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(error, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(error, 25);
+          }
+        }
+      }
+    }
+
+    &.yellow {
+      color: colors.palette(warning, 500);
+      background-color: colors.palette(warning, 50);
+      border: util.$chip-border-width solid colors.palette(warning, 100);
+
+      &.inactive {
+        color: colors.palette(warning, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(warning, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(warning, 25);
+          }
+        }
+      }
+    }
+
+    &.green {
+      color: colors.palette(success, 500);
+      background-color: colors.palette(success, 50);
+      border: util.$chip-border-width solid colors.palette(success, 100);
+
+      &.inactive {
+        color: colors.palette(success, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(success, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(success, 25);
+          }
+        }
+      }
+    }
+
+    &.blue {
+      color: colors.palette(progress, 500);
+      background-color: colors.palette(progress, 50);
+      border: util.$chip-border-width solid colors.palette(progress, 100);
+
+      &.inactive {
+        color: colors.palette(progress, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(success, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(success, 25);
+          }
+        }
+      }
+    }
+
+    &.white {
+      color: colors.palette(neutral, white);
+      background-color: transparent;
+      border: util.$chip-border-width solid colors.palette(neutral, white);
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: calc(100% + calc(util.$chip-border-width * 2));
+        height: calc(100% + calc(util.$chip-border-width * 2));
+        left: calc(util.$chip-border-width * -1);
+        top: calc(util.$chip-border-width * -1);
+        background-color: colors.palette(neutral, white);
+        opacity: 0.4;
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(gray, 100);
+            opacity: 0.4;
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(gray, 100);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
+    &.gray {
+      color: colors.palette(gray, 500);
+      background-color: colors.palette(gray, 50);
+      border: util.$chip-border-width solid colors.palette(gray, 100);
+
+      &.inactive {
+        color: colors.palette(gray, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(gray, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(gray, 25);
+          }
+        }
+      }
+    }
+  }
+
+  &.outlined {
+    &.clickable {
+      &::before {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0.1;
+      }
+    }
+
+    &:active {
+      .iconButton,
+      &::before {
+        opacity: 0.5;
+      }
+    }
+
+    @include util.generateChipDefaultColorsVariant("outlined");
+
+    &.red {
+      border: util.$chip-border-width solid colors.palette(error, 500);
+      color: colors.palette(error, 500);
+      background-color: transparent;
+
+      &.inactive {
+        color: colors.palette(error, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(error, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(error, 25);
+            z-index: layout.get-z-index(button-overlay);
+          }
+        }
+      }
+    }
+
+    &.yellow {
+      border: util.$chip-border-width solid colors.palette(warning, 500);
+      color: colors.palette(warning, 500);
+      background-color: transparent;
+
+      &.inactive {
+        color: colors.palette(warning, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(warning, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(warning, 25);
+            z-index: layout.get-z-index(button-overlay);
+          }
+        }
+      }
+    }
+
+    &.green {
+      border: util.$chip-border-width solid colors.palette(success, 500);
+      color: colors.palette(success, 500);
+      background-color: transparent;
+
+      &.inactive {
+        color: colors.palette(success, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(success, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(success, 25);
+            z-index: layout.get-z-index(button-overlay);
+          }
+        }
+      }
+    }
+
+    &.blue {
+      border: util.$chip-border-width solid colors.palette(progress, 500);
+      color: colors.palette(progress, 500);
+      background-color: transparent;
+
+      &.inactive {
+        color: colors.palette(progress, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(progress, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(progress, 25);
+            z-index: layout.get-z-index(button-overlay);
+          }
+        }
+      }
+    }
+
+    &.white {
+      border: util.$chip-border-width solid colors.palette(neutral, white);
+      color: colors.palette(neutral, white);
+      background-color: transparent;
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(bg, 1);
+            opacity: 0.1;
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(bg, 1);
+            opacity: 0.05;
+          }
+        }
+      }
+    }
+
+    &.gray {
+      border: util.$chip-border-width solid colors.palette(gray, 100);
+      color: colors.palette(gray, 500);
+      background-color: transparent;
+
+      &.inactive {
+        color: colors.palette(gray, 200);
+      }
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette(gray, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette(gray, 25);
+            z-index: layout.get-z-index(button-overlay);
+          }
+        }
+      }
+    }
+  }
+
+  &.sm {
+    height: spacing.gap(gap-6);
+    padding: 0 spacing.gap(gap-2);
+
+    &.withLeadingIcon {
+      &:not(.clearable) {
+        padding-right: spacing.gap(gap-3);
+      }
+    }
+
+    &.onlyIcon {
+      &:not(.clearable) {
+        width: spacing.gap(gap-6);
+        padding: 0;
+      }
+    }
+  }
+
+  &.lg {
+    height: spacing.gap(gap-7);
+    padding: 0 spacing.gap(gap-3);
+
+    &.withLeadingIcon {
+      padding-left: spacing.gap(gap-2);
+    }
+
+    &.clearable {
+      padding-right: spacing.gap(gap-2);
+    }
+
+    &.onlyIcon {
+      &:not(.clearable) {
+        width: spacing.gap(gap-7);
+        padding: 0;
+      }
+    }
+  }
+
+  .label,
+  svg {
+    z-index: layout.get-z-index(button-label);
+  }
+
+  .label {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+  }
+
+  .leadingImg {
+    width: spacing.gap(gap-4);
+    height: spacing.gap(gap-4);
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .iconButton {
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: inherit;
+    z-index: layout.get-z-index(button-overlay);
+  }
+}

@@ -1,0 +1,54 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/shadows";
+
+$border-width: 1px;
+
+.sectionButton {
+  cursor: pointer;
+  height: 56px;
+  padding: 0 spacing.gap(gap-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: spacing.gap(gap-3);
+  box-sizing: border-box;
+  position: relative;
+  transition: all 200ms ease-in-out;
+  color: colors.palette(tertiary, 500);
+  background-color: colors.palette(bg, 1);
+  border: solid $border-width var(--custom-border-color);
+  border-radius: spacing.gap(gap-3);
+  @include typography.text(md, bold);
+
+  &.hasShadow {
+    box-shadow: shadows.apply(sm);
+    &:hover {
+      box-shadow: shadows.apply(lg);
+    }
+  }
+
+  &::before {
+    content: "";
+    width: calc(100% + ($border-width * 2));
+    height: calc(100% + ($border-width * 2));
+    position: absolute;
+    left: -$border-width;
+    top: -$border-width;
+    opacity: 0;
+    background-color: transparent;
+    transition: all 200ms ease-in-out;
+  }
+
+  &Label,
+  &Icon {
+    position: relative;
+    z-index: layout.get-z-index(button-label);
+  }
+
+  .trailingIcon {
+    color: colors.palette(secondary, 500);
+  }
+}

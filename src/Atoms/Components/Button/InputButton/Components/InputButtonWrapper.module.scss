@@ -1,0 +1,11 @@
+.inputButtonWrapper {
+  width: 250px;
+  position: relative;
+
+  [class*="outlined"],
+  [class*="filled"] {
+    position: absolute;
+    right: 4px;
+    bottom: 3px;
+  }
+}

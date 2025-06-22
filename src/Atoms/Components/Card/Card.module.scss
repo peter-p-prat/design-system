@@ -1,0 +1,27 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/breakpoints";
+
+.card {
+  border-radius: spacing.gap(gap-3);
+  box-shadow: shadows.apply(xs);
+  background-color: colors.palette(neutral, white);
+  transition: all 150ms ease-in-out;
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    border-radius: spacing.gap(gap-4);
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.hover {
+    &:hover {
+      @include breakpoints.media-breakpoint-only(desktop) {
+        box-shadow: shadows.apply(xl);
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/layout";
+
+$chip-border-width: 1px;
+$default-color-names: "primary", "secondary", "tertiary";
+
+@mixin chipColorStyles($default-color, $variant) {
+  @if $variant == "filled" {
+    &.#{$default-color} {
+      background-color: colors.palette($default-color, 500);
+      color: colors.palette(neutral, white);
+      border: $chip-border-width solid colors.palette($default-color, 500);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette($default-color, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette($default-color, 25);
+          }
+        }
+      }
+    }
+  }
+
+  @if $variant == "filled-light" {
+    &.#{$default-color} {
+      color: colors.palette($default-color, 500);
+      background-color: colors.palette($default-color, 50);
+      border: $chip-border-width solid colors.palette($default-color, 100);
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette($default-color, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette($default-color, 25);
+          }
+        }
+      }
+    }
+  }
+
+  @if $variant == "outlined" {
+    &.#{$default-color} {
+      border: $chip-border-width solid colors.palette($default-color, 500);
+      color: colors.palette($default-color, 500);
+      background-color: transparent;
+
+      &.clickable,
+      &.clearable {
+        &:hover {
+          &::before {
+            background-color: colors.palette($default-color, 800);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: colors.palette($default-color, 25);
+            z-index: layout.get-z-index(button-overlay);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generateChipDefaultColorsVariant($variant) {
+  @each $default-color in $default-color-names {
+    @include chipColorStyles($default-color, $variant);
+  }
+}

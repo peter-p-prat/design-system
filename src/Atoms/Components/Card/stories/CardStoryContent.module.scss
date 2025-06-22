@@ -1,0 +1,10 @@
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.cardStoryContent {
+  @include typography.text();
+  & {
+    min-width: 300px;
+    padding: spacing.gap(gap-10);
+  }
+}

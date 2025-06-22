@@ -1,0 +1,8 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.cardBackgroundWrapper {
+  min-width: 300px;
+  background-color: colors.palette(gray, 50);
+  padding: spacing.gap(gap-10);
+}

@@ -1,4 +1,7 @@
 @use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/layout";
 
 .button {
   border: none;
@@ -32,16 +35,16 @@
   }
 
   &.rounded {
-    border-radius: 40px;
+    border-radius: spacing.gap(gap-10);
     &::before {
-      border-radius: 40px;
+      border-radius: spacing.gap(gap-10);
     }
   }
 
   &.square {
-    border-radius: 4px;
+    border-radius: spacing.gap(gap-1);
     &::before {
-      border-radius: 4px;
+      border-radius: spacing.gap(gap-1);
     }
   }
 
@@ -52,7 +55,7 @@
   &Label,
   &Icon {
     position: relative;
-    z-index: 1;
+    z-index: layout.get-z-index(button-label);
   }
 
   &.disabled {
@@ -163,7 +166,7 @@
       &::before {
         background-color: colors.palette(buttons, 25);
         opacity: 0.2;
-        z-index: 2;
+        z-index: layout.get-z-index(button-overlay);
       }
     }
 
@@ -267,98 +270,116 @@
   }
 
   &.xs {
-      height: 32px;
-      padding: 0 12px;
-      gap: 8px;
+    @include typography.text(sm, medium);
+    & {
+      height: spacing.gap(gap-8);
+      padding: 0 spacing.gap(gap-3);
+      gap: spacing.gap(gap-2);
+    }
 
     .spinner {
-      width: 20px;
-      height: 20px;
+      width: spacing.gap(gap-5);
+      height: spacing.gap(gap-5);
     }
 
     &:not(:has(.buttonLabel)) {
       padding: 0;
-      width: 32px;
+      width: spacing.gap(gap-8);
     }
   }
 
   &.sm {
-      height: 36px;
-      padding: 0 12px;
-      gap: 8px;
+    @include typography.text(sm, medium);
+    & {
+      height: spacing.gap(gap-9);
+      padding: 0 spacing.gap(gap-3);
+      gap: spacing.gap(gap-2);
+    }
 
     .spinner {
-      width: 20px;
-      height: 20px;
+      width: spacing.gap(gap-5);
+      height: spacing.gap(gap-5);
     }
 
     &:not(:has(.buttonLabel)) {
       padding: 0;
-      width: 36px;
+      width: spacing.gap(gap-9);
     }
   }
 
   &.md {
-      height: 40px;
-      padding: 0 16px;
-      gap: 8px;
+    @include typography.text(sm, medium);
+    & {
+      height: spacing.gap(gap-10);
+      padding: 0 spacing.gap(gap-4);
+      gap: spacing.gap(gap-2);
+    }
 
     .spinner {
-      width: 20px;
-      height: 20px;
+      width: spacing.gap(gap-5);
+      height: spacing.gap(gap-5);
     }
 
     &:not(:has(.buttonLabel)) {
       padding: 0;
-      width: 40px;
+      width: spacing.gap(gap-10);
     }
   }
 
   &.lg {
-      height: 44px;
-      padding: 0 24px;
-      gap: 8px;
+    @include typography.text(md, medium);
+    & {
+      height: spacing.gap(gap-11);
+      padding: 0 spacing.gap(gap-6);
+      gap: spacing.gap(gap-2);
+    }
 
     .spinner {
-      width: 24px;
-      height: 24px;
+      width: spacing.gap(gap-6);
+      height: spacing.gap(gap-6);
     }
 
     &:not(:has(.buttonLabel)) {
       padding: 0;
-      width: 44px;
+      width: spacing.gap(gap-11);
     }
   }
 
   &.xl {
-      height: 48px;
-      padding: 0 32px;
-      gap: 8px;
+    @include typography.text(md, medium);
+    & {
+      height: spacing.gap(gap-12);
+      padding: 0 spacing.gap(gap-8);
+      gap: spacing.gap(gap-2);
+    }
 
     .spinner {
-      width: 24px;
-      height: 24px;
+      width: spacing.gap(gap-6);
+      height: spacing.gap(gap-6);
     }
 
     &:not(:has(.buttonLabel)) {
       padding: 0;
-      width: 48px;
+      width: spacing.gap(gap-12);
     }
   }
 
   &.xl-2 {
-      height: 60px;
-      padding: 0 32px;
-      gap: 12px;
+    @include typography.text(lg, medium);
+    & {
+      height: spacing.gap(gap-15);
+      padding: 0 spacing.gap(gap-8);
+      gap: spacing.gap(gap-3);
+    }
 
     .spinner {
-      width: 28px;
-      height: 28px;
+      width: spacing.gap(gap-7);
+      height: spacing.gap(gap-7);
     }
 
     &:not(:has(.buttonLabel)) {
       padding: 0;
-      width: 60px;
+      width: spacing.gap(gap-15);
     }
   }
 

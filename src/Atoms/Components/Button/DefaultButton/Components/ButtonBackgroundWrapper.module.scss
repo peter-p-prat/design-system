@@ -1,0 +1,11 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.buttonBackgroundWrapper {
+  padding: spacing.gap(gap-5) spacing.gap(gap-10);
+  background-color: colors.palette(neutral, black);
+
+  &.overPrimary {
+    background-color: colors.palette(primary, 500);
+  }
+}

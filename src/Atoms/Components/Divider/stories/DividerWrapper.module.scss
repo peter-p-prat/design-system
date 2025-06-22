@@ -1,0 +1,25 @@
+@use "@app/Foundations/theme/typography";
+
+.dividerWrapper {
+  @include typography.text(md, medium);
+  & {
+    width: 500px;
+  }
+
+  .dividerWrapperBox {
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+
+    &.vertical {
+      height: 100px;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &.horizontal {
+      flex-direction: column;
+    }
+  }
+}

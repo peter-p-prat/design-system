@@ -1,0 +1,64 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.dividerContainer {
+  display: flex;
+  align-items: center;
+
+  &.horizontal {
+    width: 100%;
+  }
+
+  &.vertical {
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.dividerLine {
+  &.horizontal {
+    max-width: var(--divider-length, "100%");
+    width: var(--divider-length, "100%");
+    height: var(--divider-width, 1px);
+    margin: var(--divider-sides-padding) var(--divider-limits-padding);
+  }
+
+  &.vertical {
+    max-height: var(--divider-length, "100%");
+    height: var(--divider-length, "100%");
+    width: var(--divider-width, 1px);
+    margin: var(--divider-limits-padding) var(--divider-sides-padding);
+  }
+
+  &.solid {
+    background-color: var(--color, colors.palette(gray, 50));
+  }
+
+  &.dashed {
+    &.horizontal {
+      background: {
+        image: linear-gradient(
+          90deg,
+          var(--color, colors.palette(gray, 50)),
+          var(--color, colors.palette(gray, 50)) 50%,
+          transparent 51%,
+          transparent 100%
+        );
+        size: spacing.gap(gap-2) spacing.gap(gap-2);
+      }
+    }
+
+    &.vertical {
+      background: {
+        image: linear-gradient(
+          180deg,
+          var(--color, colors.palette(gray, 50)),
+          var(--color, colors.palette(gray, 50)) 50%,
+          transparent 51%,
+          transparent 100%
+        );
+        size: spacing.gap(gap-2) spacing.gap(gap-2);
+      }
+    }
+  }
+}
