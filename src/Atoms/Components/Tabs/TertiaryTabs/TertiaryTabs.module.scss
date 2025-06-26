@@ -1,0 +1,46 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/shadows";
+
+.tertiaryTabs {
+  @include layout.nav-bar();
+  & {
+    display: grid;
+    grid-template-columns: repeat(var(--tabs-amount), 1fr);
+    box-shadow: shadows.apply(tertiaryTabs);
+  }
+
+  .tab {
+    @include typography.text(xxs, bold);
+    & {
+      height: 100%;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: spacing.gap(gap-1);
+      background-color: colors.palette(bg, 1);
+      color: colors.palette(primary, 500);
+      border: none;
+      cursor: pointer;
+      transition: all 100ms ease-in-out;
+    }
+
+    @include breakpoints.media-breakpoint-only(tablet) {
+      @include typography.text(sm, medium);
+      & {
+        gap: spacing.gap(gap-2);
+        padding: spacing.gap(gap-2) spacing.gap(gap-4) spacing.gap(gap-3);
+      }
+    }
+
+    &.active {
+      background-color: colors.palette(primary, 500);
+      color: colors.palette(neutral, white);
+    }
+  }
+}

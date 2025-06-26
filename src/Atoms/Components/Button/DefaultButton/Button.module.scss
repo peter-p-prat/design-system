@@ -63,7 +63,7 @@
   }
 
   &.filled {
-    color: colors.palette(neutral, white);
+    color: colors.palette(bg, 1);
     background-color: colors.palette(buttons, 500);
     border: solid 1px colors.palette(buttons, 500);
 

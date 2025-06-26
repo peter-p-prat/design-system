@@ -1,0 +1,118 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/blurs";
+@use "@app/Foundations/theme/animations";
+@use "@app/Foundations/theme/layout";
+
+.popoverWrapper {
+  position: relative;
+}
+
+.anchor {
+  > * {
+    cursor: pointer;
+  }
+}
+
+.backdrop {
+  @include blurs.apply(sm, dark);
+  & {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: layout.get-z-index(dropdown-mobile);
+  }
+
+  &.desktopMode {
+    z-index: layout.get-z-index(dropdown-desktop);
+    position: absolute;
+    backdrop-filter: none;
+    background-color: transparent;
+    top: unset;
+
+    &.openToTop {
+      top: 0;
+      bottom: unset;
+    }
+  }
+
+  &.opened {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.content {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: spacing.gap(gap-5);
+  display: none;
+  @include animations.animation(growOutWithoutBounce, 150ms, ease-in-out, 0s, 1, normal, forwards);
+
+  &:not(.desktopMode) {
+    @include breakpoints.media-breakpoint-down(desktop) {
+      @include layout.container();
+      display: none;
+      width: 100%;
+      max-height: 94lvh;
+      overflow: hidden;
+      margin-top: spacing.gap(gap-12);
+      margin-bottom: spacing.gap(gap-12);
+    }
+  }
+
+  &:not(.desktopMode) {
+    @include breakpoints.media-breakpoint-only(tablet) {
+      width: 370px;
+    }
+  }
+
+  &.desktopMode {
+    position: absolute;
+    top: 0;
+    margin-top: spacing.gap(gap-2);
+
+    &.right {
+      right: 0;
+      left: unset;
+      transform-origin: top right;
+    }
+
+    &.left {
+      left: 0;
+      right: unset;
+      transform-origin: top left;
+    }
+
+    &.openToTop {
+      top: unset;
+      bottom: 1px;
+      flex-direction: column-reverse;
+      margin-bottom: spacing.gap(gap-1);
+    }
+
+    &.openToTop.right {
+      transform-origin: bottom right;
+    }
+
+    &.openToTop.left {
+      transform-origin: bottom left;
+    }
+
+    &.applyShadow {
+      > *:first-child {
+        box-shadow: shadows.apply(lg);
+      }
+    }
+  }
+
+  &.opened {
+    display: flex;
+  }
+}

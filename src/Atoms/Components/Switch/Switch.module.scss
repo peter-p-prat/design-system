@@ -1,0 +1,157 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/layout";
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.sm {
+    gap: spacing.gap(gap-2);
+    .switchToggle {
+      width: 36px;
+      height: 20px;
+
+      &::before {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &.md {
+    gap: spacing.gap(gap-4);
+    .switchToggle {
+      width: 44px;
+      height: 24px;
+
+      &::before {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &.light,
+  &.dark {
+    &.disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+  }
+
+  &.light {
+    &:hover {
+      .switchToggle {
+        background-color: colors.palette(gray, 300);
+      }
+    }
+
+    &.on {
+      &:hover {
+        .switchToggle {
+          background-color: colors.palette(primary, 700) !important;
+        }
+      }
+    }
+
+    &.disabled {
+      .switchToggle {
+        background-color: colors.palette(gray, 200);
+      }
+    }
+
+    .switchToggle {
+      background-color: colors.palette(gray, 200);
+    }
+
+    input[type="checkbox"]:checked + .switchToggle {
+      background-color: colors.palette(primary, 500);
+    }
+
+    .switchLabel {
+      color: colors.palette(gray, 900);
+    }
+  }
+
+  &.dark {
+    &:hover {
+      .switchToggle {
+        background-color: colors.palette(gray, 500);
+      }
+    }
+
+    &.on {
+      &:hover {
+        .switchToggle {
+          background-color: colors.palette(primary, 100) !important;
+        }
+      }
+    }
+
+    &.disabled {
+      .switchToggle {
+        background-color: colors.palette(gray, 400);
+      }
+    }
+
+    .switchToggle {
+      background-color: colors.palette(gray, 400);
+
+      &::before {
+        background-color: colors.palette(gray, 50);
+      }
+    }
+
+    input[type="checkbox"]:checked + .switchToggle {
+      background-color: colors.palette(gray, 50);
+
+      &::before {
+        background-color: colors.palette(primary, 500);
+      }
+    }
+
+    .switchLabel {
+      color: colors.palette(neutral, white);
+    }
+  }
+
+  &Toggle {
+    border-radius: spacing.gap(gap-3);
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: background-color 0.4s;
+    padding: 0 2px;
+    box-sizing: border-box;
+
+    &::before {
+      content: "";
+      border-radius: 50%;
+      transition: transform 0.2s;
+      background-color: colors.palette(neutral, white);
+    }
+  }
+
+  input[type="checkbox"]:checked + .switchToggle {
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+
+  &Label {
+    @include typography.text(md, regular);
+  }
+}

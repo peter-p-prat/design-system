@@ -1,0 +1,40 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/colors";
+
+.headerContainer {
+  @include layout.header();
+  & {
+    display: flex;
+    justify-content: center;
+    background-color: var(
+      --header-background-color,
+      colors.palette(primary, 500)
+    );
+    align-items: center;
+    height: layout.get-layout-heights(landing, header, mobile);
+
+    @include breakpoints.media-breakpoint-only(tablet) {
+      height: layout.get-layout-heights(landing, header, tablet);
+    }
+
+    @include breakpoints.media-breakpoint-only(desktop) {
+      height: layout.get-layout-heights(landing, header, desktop);
+    }
+  }
+}
+
+.headerContent {
+  width: 100%;
+  height: 100%;
+
+  &Wrapper {
+    @include layout.container();
+    & {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+  }
+}

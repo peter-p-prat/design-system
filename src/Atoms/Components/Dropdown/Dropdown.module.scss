@@ -110,7 +110,8 @@
     justify-content: space-between;
     cursor: pointer;
     transition: all 200ms ease-in-out;
-    padding: spacing.gap(gap-1) spacing.gap(gap-2) spacing.gap(gap-1) spacing.gap(gap-3);
+    padding: spacing.gap(gap-1) spacing.gap(gap-2) spacing.gap(gap-1)
+      spacing.gap(gap-3);
     border: 1px solid transparent;
     border-radius: spacing.gap(gap-1);
 
@@ -163,7 +164,7 @@
     }
 
     &.light {
-      color: colors.palette(neutral, white);
+      color: colors.palette(bg, 1);
 
       &:not(.disabled) {
         &:hover {
@@ -203,7 +204,7 @@
       }
 
       &.light {
-        color: colors.palette(neutral, white);
+        color: colors.palette(bg, 1);
       }
     }
   }

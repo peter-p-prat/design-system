@@ -1,0 +1,109 @@
+.logo {
+  display: inline-flex;
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.symbol {
+    .container {
+      display: flex;
+
+      &.left {
+        justify-content: flex-start;
+      }
+
+      &.center {
+        justify-content: center;
+      }
+
+      &.right {
+        justify-content: flex-end;
+      }
+    }
+
+    .image {
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &.xl {
+      .container {
+        width: 80px;
+        height: 72px;
+      }
+    }
+    &.l {
+      .container {
+        width: 64px;
+        height: 56px;
+      }
+    }
+    &.m {
+      .container {
+        width: 44px;
+        height: 40px;
+      }
+    }
+    &.s {
+      .container {
+        width: 40px;
+        height: 32px;
+      }
+    }
+    &.xs {
+      .container {
+        width: 28px;
+        height: 24px;
+      }
+    }
+    &.xxs {
+      .container {
+        width: 18px;
+        height: 16px;
+      }
+    }
+  }
+
+  &.main {
+    .container {
+      display: flex;
+    }
+
+    .image {
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &.xl {
+      .container {
+        height: 72px;
+      }
+    }
+    &.l {
+      .container {
+        height: 56px;
+      }
+    }
+    &.m {
+      .container {
+        height: 40px;
+      }
+    }
+    &.s {
+      .container {
+        height: 32px;
+      }
+    }
+    &.xs {
+      .container {
+        height: 24px;
+      }
+    }
+    &.xxs {
+      .container {
+        height: 16px;
+      }
+    }
+  }
+}

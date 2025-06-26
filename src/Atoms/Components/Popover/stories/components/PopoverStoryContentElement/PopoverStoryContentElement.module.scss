@@ -1,0 +1,14 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.popoverStoryContentElement {
+  width: 316px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: spacing.gap(gap-3);
+  padding: spacing.gap(gap-4);
+  border-radius: spacing.gap(gap-4);
+  background-color: colors.palette(neutral, white);
+  color: colors.palette(gray, 500);
+}

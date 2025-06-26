@@ -1,0 +1,58 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/focusRings";
+@use "@app/Foundations/theme/animations";
+@use "@app/Foundations/theme/spacing";
+
+.numberInput {
+  @include typography.text(lg, medium);
+  & {
+    max-width: spacing.gap(gap-12);
+    width: 100%;
+    height: spacing.gap(gap-12);
+    box-sizing: border-box;
+    border: 1px solid colors.palette(gray, 50);
+    border-radius: spacing.gap(gap-3);
+    text-align: center;
+    color: colors.palette(primary, 500);
+    -moz-appearance: textfield;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &:disabled {
+    border: 1px solid colors.palette(gray, 50);
+    background-color: colors.palette(neutral, white);
+    color: colors.palette(gray, 50);
+
+    &:hover {
+      border: 1px solid colors.palette(gray, 50);
+    }
+  }
+
+  &:hover {
+    border: 1px solid colors.palette(primary, 500);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border: 1px solid colors.palette(primary, 500);
+    box-shadow: focusRings.apply(primary, 25);
+  }
+
+  &.error {
+    border: 1px solid colors.palette(error, 50);
+    background-color: colors.palette(error, 50);
+    color: colors.palette(error, 500);
+
+    &:focus,
+    &:focus-visible {
+      box-shadow: focusRings.apply(error, 50);
+    }
+  }
+}

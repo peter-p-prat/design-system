@@ -1,0 +1,203 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+$radioButtonFakeDotSize: calc(50% - 1px);
+
+.radioButton {
+  &Content {
+    display: inline-flex;
+    align-items: center;
+    gap: spacing.gap(gap-3);
+    cursor: pointer;
+
+    &:not(:only-child) {
+      margin-bottom: spacing.gap(gap-6);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.leftToRight {
+      flex-direction: row;
+    }
+
+    &.rightToLeft {
+      flex-direction: row-reverse;
+    }
+
+    &.noGap {
+      gap: 0;
+    }
+
+    .radioButtonFake {
+      box-sizing: border-box;
+    }
+
+    &.large {
+      @include typography.text(lg, regular);
+
+      .radioButtonFake {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &.medium {
+      @include typography.text(md, regular);
+
+      .radioButtonFake {
+        height: spacing.gap(gap-4);
+        width: spacing.gap(gap-4);
+      }
+    }
+
+    &.small {
+      @include typography.text(sm, regular);
+
+      .radioButtonFake {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &.light {
+      &:hover {
+        .radioButtonFake {
+          background-color: colors.palette(primary, 700);
+          border-color: unset;
+          justify-content: center;
+          align-items: center;
+          &:after {
+            content: "";
+            width: $radioButtonFakeDotSize;
+            height: $radioButtonFakeDotSize;
+            background-color: colors.palette(neutral, white);
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .radioButtonFake {
+        border: solid 1px colors.palette(gray, 100);
+      }
+
+      .radioButtonInput {
+        &:checked + .radioButtonFake {
+          background-color: colors.palette(primary, 500);
+          border: none;
+        }
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+
+        &.checked {
+          .radioButtonFake {
+            opacity: 0.5;
+          }
+        }
+
+        &:not(.checked) {
+          &:hover {
+            .radioButtonFake {
+              background-color: unset;
+              &:after {
+                content: unset;
+              }
+            }
+          }
+        }
+
+        img {
+          opacity: 0.2;
+          filter: grayscale(70%);
+        }
+
+        .radioButtonFake {
+          border: solid 1px colors.palette(gray, 50);
+        }
+
+        .radioButtonLabel {
+          color: colors.palette(gray, 50);
+        }
+      }
+    }
+
+    &.dark {
+      color: colors.palette(primary, 100);
+
+      &:hover {
+        .radioButtonFake {
+          background-color: colors.palette(primary, 700);
+          justify-content: center;
+          align-items: center;
+          &:after {
+            content: "";
+            width: $radioButtonFakeDotSize;
+            height: $radioButtonFakeDotSize;
+            background-color: colors.palette(neutral, white);
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .radioButtonFake {
+        border: solid 1px colors.palette(primary, 100);
+      }
+
+      .radioButtonInput {
+        &:checked + .radioButtonFake {
+          background-color: colors.palette(primary, 500);
+        }
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+
+        &:hover {
+          .radioButtonFake {
+            background-color: unset;
+            &:after {
+              content: unset;
+            }
+          }
+        }
+
+        .radioButtonFake {
+          border: solid 1px colors.palette(primary, 400);
+        }
+
+        .radioButtonLabel {
+          color: colors.palette(primary, 400);
+        }
+      }
+    }
+  }
+
+  &Input {
+    display: none;
+    &:checked + .radioButtonFake {
+      justify-content: center;
+      align-items: center;
+      &:after {
+        content: "";
+        width: $radioButtonFakeDotSize;
+        height: $radioButtonFakeDotSize;
+        background-color: colors.palette(neutral, white);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &Fake {
+    border-radius: 50%;
+    display: inline-flex;
+  }
+
+  &Label {
+    cursor: inherit;
+    display: flex;
+  }
+}

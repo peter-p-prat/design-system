@@ -1,0 +1,20 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.popoverStoryAnchor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: spacing.gap(gap-2);
+  border: 0;
+  border-radius: spacing.gap(gap-2);
+  background-color: transparent;
+  color: colors.palette(neutral, white);
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
+
+  &:hover,
+  &.is-open {
+    background-color: colors.palette(primary, 700);
+  }
+}

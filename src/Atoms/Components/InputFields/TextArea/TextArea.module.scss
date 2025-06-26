@@ -1,0 +1,102 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/focusRings";
+@use "@app/Foundations/theme/animations";
+@use "@app/Foundations/theme/spacing";
+
+.fieldWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: spacing.gap(gap-1);
+}
+
+.label {
+  @include typography.text(sm, medium);
+  & {
+    color: colors.palette(gray, 500);
+    padding-left: spacing.gap(gap-1);
+  }
+}
+
+.textarea {
+  box-sizing: border-box;
+  border: 1px solid colors.palette(gray, 50);
+  border-radius: spacing.gap(gap-2);
+  width: 100%;
+  color: colors.palette(gray, 500);
+
+  &::placeholder {
+    color: colors.palette(gray, 400);
+  }
+
+  &:disabled {
+    border-color: colors.palette(gray, 50);
+    background-color: colors.palette(gray, 25);
+    color: colors.palette(gray, 400);
+
+    &:hover {
+      border-color: colors.palette(gray, 50);
+    }
+  }
+
+  &:hover {
+    border-color: colors.palette(primary, 300);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border-color: colors.palette(primary, 300);
+    box-shadow: focusRings.apply(primary, 25);
+  }
+
+  &.error {
+    border-color: colors.palette(error, 500);
+
+    &:focus,
+    &:focus-visible {
+      box-shadow: focusRings.apply(error, 50);
+    }
+  }
+
+  &.success {
+    border-color: colors.palette(success, 600);
+
+    &:focus,
+    &:focus-visible {
+      box-shadow: focusRings.apply(success, 50);
+    }
+  }
+
+  &.small {
+    @include typography.text(sm, regular);
+    & {
+      padding: spacing.gap(gap-2) spacing.gap(gap-3);
+    }
+  }
+
+  &.medium {
+    min-height: 44px;
+    @include typography.text(md, regular);
+    & {
+      padding: spacing.gap(gap-2) spacing.gap(gap-4);
+    }
+  }
+}
+
+.feedbackMessage {
+  @include typography.text(sm, regular);
+  & {
+    color: colors.palette(gray, 400);
+    padding-left: spacing.gap(gap-1);
+  }
+
+  &.error {
+    color: colors.palette(error, 500);
+  }
+
+  &.success {
+    color: colors.palette(success, 600);
+  }
+}

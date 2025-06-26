@@ -1,0 +1,102 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.secondaryTabs {
+  display: grid;
+  grid-template-columns: repeat(var(--tabs-amount), 1fr);
+  position: relative;
+  background-color: transparent;
+  border: 2px solid transparent;
+  overflow: hidden;
+  isolation: isolate;
+
+  &.rounded {
+    overflow: visible;
+  }
+
+  .tab {
+    @include typography.text(md, medium);
+    & {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+      padding: spacing.gap(gap-2) spacing.gap(gap-5);
+      gap: spacing.gap(gap-2);
+      background-color: transparent;
+      color: colors.palette(gray, 400);
+      border: none;
+      cursor: pointer;
+      transition:
+        color 150ms ease-in-out,
+        border-color 150ms ease-in-out;
+      border-bottom: 1px solid colors.palette(gray, 50);
+    }
+
+    &.small {
+      @include typography.text(sm, medium);
+      & {
+        padding: spacing.gap(gap-2) spacing.gap(gap-4);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0px;
+      opacity: 10%;
+      transition: background-color 200ms ease-in-out;
+    }
+
+    &:hover {
+      color: colors.palette(primary, 500);
+      border-bottom: 1px solid colors.palette(primary, 500);
+    }
+
+    &.active {
+      @include typography.text(md, bold);
+      & {
+        color: colors.palette(primary, 500);
+      }
+
+      &.small {
+        @include typography.text(sm, bold);
+      }
+    }
+  }
+
+  & .selectedTabIndicator {
+    --width: calc((100% / var(--tabs-amount)));
+    position: absolute;
+    width: calc(var(--width));
+    margin-left: calc(var(--active) * var(--width));
+    bottom: 0px;
+    background-color: colors.palette(primary, 500);
+    transition: all 200ms ease-in-out;
+
+    &.squared {
+      height: 2px;
+    }
+
+    &.rounded {
+      height: 3px;
+      border-radius: spacing.gap(gap-4);
+      transform: translateY(1px);
+    }
+  }
+
+  &:has(.tab.active):not(.disableSelectedBackground)::after {
+    --width: calc((100% / var(--tabs-amount)));
+    content: "";
+    position: absolute;
+    background-color: colors.palette(primary, 50);
+    width: calc(var(--width));
+    margin-left: calc(var(--active) * var(--width));
+    cursor: pointer;
+    z-index: -1;
+    inset: 0px;
+    transition: all 200ms ease-in-out;
+  }
+}

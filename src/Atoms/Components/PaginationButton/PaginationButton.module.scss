@@ -1,0 +1,56 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+.paginationButton {
+  appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: all 200ms ease-in-out;
+  border: solid 1px transparent;
+  background-color: unset;
+  color: colors.palette(gray, 500);
+
+  &:hover {
+    border: solid 1px colors.palette(tertiary, 500);
+  }
+
+  &.arrow {
+    border: solid 1px colors.palette(gray, 50);
+    background-color: colors.palette(bg, 1);
+
+    &:hover {
+      border: solid 1px colors.palette(tertiary, 500);
+    }
+  }
+
+  &.selected {
+    background-color: colors.palette(tertiary, 500);
+    color: colors.palette(gray, 25);
+  }
+
+  &.hidden {
+    opacity: 0;
+    cursor: unset;
+  }
+
+  &.large {
+    @include typography.text(md, medium);
+    & {
+      height: spacing.gap(gap-12);
+      width: spacing.gap(gap-12);
+    }
+  }
+
+  &.medium {
+    @include typography.text(sm, medium);
+    & {
+      height: spacing.gap(gap-10);
+      width: spacing.gap(gap-10);
+    }
+  }
+}

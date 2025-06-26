@@ -1,0 +1,16 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/layout";
+
+.footerWrapper {
+  width: 100vw;
+  position: relative;
+  height: layout.get-layout-heights(landing, footer, mobile);
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    height: layout.get-layout-heights(landing, footer, tablet);
+  }
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    height: layout.get-layout-heights(landing, footer, desktop);
+  }
+}

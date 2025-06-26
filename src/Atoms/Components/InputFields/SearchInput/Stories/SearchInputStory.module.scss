@@ -1,0 +1,23 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/shadows";
+
+.searchInputWrapper {
+  @include typography.heading(xs, regular);
+  & {
+    width: 450px;
+    background: colors.palette(neutral, white);
+    border: 1px solid colors.palette(gray, 100);
+    border-radius: spacing.gap(gap-2);
+    padding: spacing.gap(gap-4);
+    display: flex;
+    flex-direction: column;
+    gap: spacing.gap(gap-2);
+    box-shadow: shadows.apply(2xl);
+  }
+
+  .description {
+    @include typography.text(md, regular);
+  }
+}

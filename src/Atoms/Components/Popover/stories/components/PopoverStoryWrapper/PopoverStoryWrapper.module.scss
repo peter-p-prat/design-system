@@ -1,0 +1,11 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.popoverStoryWrapper {
+  height: 72px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: colors.palette(primary, 500);
+}

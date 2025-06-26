@@ -1,0 +1,10 @@
+@use "@app/Foundations/theme/colors";
+
+.logoWrapper {
+  display: flex;
+  background-color: colors.palette(tertiary, 500);
+}
+
+.darkBackground {
+  background-color: colors.palette(primary, 500);
+}

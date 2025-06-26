@@ -1,0 +1,70 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.primaryTabs {
+  display: grid;
+  grid-template-columns: repeat(var(--tabs-amount), 1fr);
+  position: relative;
+  background-color: colors.palette(primary, 50);
+  border-radius: spacing.gap(gap-2);
+  border: 2px solid transparent;
+  overflow: hidden;
+  isolation: isolate;
+
+  .tab {
+    @include typography.text(md, bold);
+    & {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+      padding: spacing.gap(gap-3) spacing.gap(gap-6);
+      gap: spacing.gap(gap-2);
+      background-color: transparent;
+      color: colors.palette(primary, 500);
+      border: none;
+      cursor: pointer;
+      transition: all 150ms ease-in-out;
+    }
+
+    &.small {
+      @include typography.text(sm, bold);
+      & {
+        padding: spacing.gap(gap-2) spacing.gap(gap-4);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0px;
+      border-radius: spacing.gap(gap-2);
+      opacity: 10%;
+      transition: background-color 200ms ease-in-out;
+    }
+
+    &:hover::after {
+      background-color: colors.palette(primary, 500);
+    }
+
+    &.active {
+      color: colors.palette(bg, 1);
+    }
+  }
+
+  &:has(.tab.active)::after {
+    --width: calc((100% / var(--tabs-amount)));
+    content: "";
+    position: absolute;
+    background-color: colors.palette(primary, 500);
+    width: calc(var(--width));
+    margin-left: calc(var(--active) * var(--width));
+    border-radius: inherit;
+    cursor: pointer;
+    z-index: -1;
+    inset: 0px;
+    transition: all 200ms ease-in-out;
+  }
+}

@@ -1,0 +1,14 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.switchBackgroundWrapper {
+  min-width: 300px;
+  padding: spacing.gap(gap-10);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+
+  &.isVisible {
+    background-color: colors.palette(primary, 700);
+  }
+}
