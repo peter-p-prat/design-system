@@ -2,6 +2,14 @@ import React, {useState} from "react";
 import type {Meta, StoryObj} from "@storybook/react-vite";
 
 import {
+  IconsNames,
+  Logo,
+  LogoColor,
+  LogoSize,
+  LogoVariable,
+  SymbolPosition,
+} from "@app/Foundations";
+import {
   DropdownAlignments,
   DropdownCollapsible,
   DropdownCollapsibleOptionModes,
@@ -10,15 +18,8 @@ import {
   DropdownFormTriggerSizes,
   DropdownOption,
   isCustomTrigger,
-} from "@app/Atoms";
-import {
-  IconsNames,
-  Logo,
-  LogoColor,
-  LogoSize,
-  LogoVariable,
-  SymbolPosition,
-} from "@app/Foundations";
+} from "@app/Molecules";
+
 import {logosMap} from "@app/Foundations/Components/Logo/stories/logosMap";
 
 import {DropdownStoryCustomTrigger} from "./components/DropdownStoryCustomTrigger";

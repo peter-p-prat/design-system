@@ -89,7 +89,7 @@ const demoFooterConfig: FooterConfig = {
 };
 
 const meta = {
-  title: "Atoms/Footer",
+  title: "Organisms/Footer",
   component: Footer,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

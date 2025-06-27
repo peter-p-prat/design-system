@@ -1,7 +1,6 @@
 import React from "react";
 import type {Meta, StoryObj} from "@storybook/react-vite";
 
-import {colorsPalette} from "@app/Foundations";
 import {logosMap} from "@app/Foundations/Components/Logo/stories/logosMap";
 
 import {HeaderProps, Header} from "..";
@@ -11,7 +10,7 @@ import {RightContent} from "./components/RightContent/RightContent";
 import {HeaderV2Wrapper} from "./HeaderWrapper";
 
 const meta = {
-  title: "Atoms/Header",
+  title: "Organisms/Header",
   component: Header,
   parameters: {
     layout: "centered",

@@ -2,14 +2,6 @@ import React, {useState} from "react";
 import type {Meta, StoryObj} from "@storybook/react-vite";
 
 import {
-  Dropdown,
-  DropdownAlignments,
-  DropdownFormTriggerSizes,
-  DropdownModes,
-  DropdownOption,
-  DropdownProps,
-} from "@app/Atoms";
-import {
   icons,
   IconsNames,
   Logo,
@@ -18,6 +10,15 @@ import {
   LogoVariable,
   SymbolPosition,
 } from "@app/Foundations";
+import {
+  Dropdown,
+  DropdownAlignments,
+  DropdownFormTriggerSizes,
+  DropdownModes,
+  DropdownOption,
+  DropdownProps,
+} from "@app/Molecules";
+
 import {logosMap} from "@app/Foundations/Components/Logo/stories/logosMap";
 
 import {DropdownStoryCustomTrigger} from "./components/DropdownStoryCustomTrigger";
@@ -54,7 +55,7 @@ const DEFAULT_SELECTION_OPTIONS: DropdownOption[] = [
 ];
 
 const meta = {
-  title: "Atoms/Dropdown",
+  title: "Molecules/Dropdown",
   component: Dropdown,
   parameters: {
     layout: "centered",

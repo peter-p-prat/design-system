@@ -1,16 +1,13 @@
 import React, {CSSProperties, useMemo} from "react";
 
+import {Button, ButtonAppearances, ButtonVariants, Divider} from "@app/Atoms";
 import {
-  Button,
-  ButtonAppearances,
-  ButtonVariants,
-  Divider,
   Dropdown,
   DropdownModes,
   DropdownOption,
   DropdownProps,
   DropdownSelectOption,
-} from "@app/Atoms";
+} from "@app/Molecules";
 import {
   colorsPalette,
   Logo,
