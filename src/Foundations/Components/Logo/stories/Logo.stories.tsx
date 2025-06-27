@@ -89,13 +89,11 @@ export const LightBackground: Story = {
     alt: "Z design system",
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <LogoWrapper
           darkBackground={
-            props.args.color === LogoColor.DARK_BG ||
-            props.args.color === LogoColor.WHITE
+            args.color === LogoColor.DARK_BG || args.color === LogoColor.WHITE
           }
         >
           <Story />
@@ -113,14 +111,11 @@ export const DarkBackground: Story = {
     alt: "Z design system",
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
-      console.info(props);
+    (Story, {args}) => {
       return (
         <LogoWrapper
           darkBackground={
-            props.args.color === LogoColor.DARK_BG ||
-            props.args.color === LogoColor.WHITE
+            args.color === LogoColor.DARK_BG || args.color === LogoColor.WHITE
           }
         >
           <Story />
@@ -138,13 +133,11 @@ export const WhiteBackground: Story = {
     alt: "Z design system",
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <LogoWrapper
           darkBackground={
-            props.args.color === LogoColor.DARK_BG ||
-            props.args.color === LogoColor.WHITE
+            args.color === LogoColor.DARK_BG || args.color === LogoColor.WHITE
           }
         >
           <Story />
@@ -163,13 +156,11 @@ export const Clickable: Story = {
     onClick: () => {},
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <LogoWrapper
           darkBackground={
-            props.args.color === LogoColor.DARK_BG ||
-            props.args.color === LogoColor.WHITE
+            args.color === LogoColor.DARK_BG || args.color === LogoColor.WHITE
           }
         >
           <Story />

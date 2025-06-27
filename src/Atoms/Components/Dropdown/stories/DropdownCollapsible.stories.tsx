@@ -26,12 +26,12 @@ import {DropdownWrapper} from "./DropdownWrapper";
 
 const DEFAULT_MULTISELECT_OPTIONS: DropdownOption[] = [
   {
-    label: "Earn",
-    value: "EARN",
+    label: "Clothes",
+    value: "CLOTHES",
   },
   {
-    label: "Redeem",
-    value: "REDEEM",
+    label: "Shoes",
+    value: "SHOES",
   },
 ];
 
@@ -314,13 +314,9 @@ export const Default: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -335,13 +331,9 @@ export const Placeholder: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -355,13 +347,9 @@ export const WithInitialBorders: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -376,13 +364,9 @@ export const OnlyIcon: Story = {
     desktopDropdownWidth: 200,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -397,13 +381,9 @@ export const PreventOutsideClickClosing: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -424,13 +404,9 @@ export const UsedAsMenuWithCallToAction: Story = {
     },
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -454,9 +430,8 @@ export const WithCustomTrigger: Story = {
   },
   decorators: [
     (Story) => {
-      const {props} = Story();
       return (
-        <DropdownWrapper withBackground={props.disableTransparency} light>
+        <DropdownWrapper light>
           <Story />
         </DropdownWrapper>
       );
@@ -519,13 +494,9 @@ export const WithDisabledTransparency: Story = {
     desktopDropdownWidth: 300,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -541,13 +512,9 @@ export const AlignedRight: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -563,13 +530,9 @@ export const AlignedLeft: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -584,13 +547,9 @@ export const OpenToTop: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -706,13 +665,9 @@ export const WithFormLabel: Story = {
     trigger: {label: "Label", showBorder: true, disableTransparency: true},
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -731,13 +686,9 @@ export const WithFormTrigger: Story = {
     },
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -753,13 +704,9 @@ export const WithInfoTooltip: Story = {
     dropdownListInfoTooltip: "This is an info tooltip",
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
-        >
+        <DropdownWrapper light={args.light}>
           <Story />
         </DropdownWrapper>
       );
@@ -866,10 +813,9 @@ export const UsingCustomIcons: Story = {
     },
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper {...props}>
+        <DropdownWrapper {...args}>
           <Story />
           <p>WARNING: A veces las imagenes no cargan bien</p>
         </DropdownWrapper>
@@ -954,10 +900,9 @@ export const UsingComponentAsIcon: Story = {
     },
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper {...props}>
+        <DropdownWrapper light={args.light}>
           <Story />
           <p>WARNING: A veces las imagenes no cargan bien</p>
         </DropdownWrapper>

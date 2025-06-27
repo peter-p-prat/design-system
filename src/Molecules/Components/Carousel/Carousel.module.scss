@@ -1,0 +1,46 @@
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/colors";
+
+.carouselWrapper {
+  --slide-spacing: 1.5rem;
+  --slide-size: 50%;
+}
+
+.viewportButtonsContainer {
+  position: relative;
+}
+
+.carouselViewport {
+  overflow: hidden;
+  position: relative;
+
+  &.overflowVisible {
+    overflow: visible;
+  }
+
+  &.outlined {
+    outline: 0.5px solid colors.palette(gray, 50);
+  }
+}
+
+.slidesContainer {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+
+  & > * {
+    flex: 0 0 calc(var(--slide-size) - var(--slide-spacing));
+    min-width: 0;
+    padding-left: var(--slide-spacing);
+  }
+}
+
+.carouselDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 30px;
+}

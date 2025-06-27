@@ -1,0 +1,28 @@
+@use "sass:map";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/breakpoints";
+
+.carouselStoryWrapper {
+  min-width: 300px;
+  background-color: colors.palette(bg, 3);
+  padding: spacing.gap(gap-10);
+  overflow: hidden;
+  width: 600px;
+
+  &.lightMode {
+    background: colors.palette(primary, 700);
+  }
+
+  &.mobile {
+    width: 375px;
+  }
+
+  &.tablet {
+    width: map.get(breakpoints.$default-breakpoints, tablet);
+  }
+
+  &.desktop {
+    width: map.get(breakpoints.$default-breakpoints, desktop);
+  }
+}

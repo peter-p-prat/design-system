@@ -17,41 +17,41 @@ const demoFooterConfig: FooterConfig = {
   },
   firstColumnLinks: [
     {
-      label: "Stores to Earn",
+      label: "Stores",
       onClick: () => {},
     },
     {
-      label: "Stores to Redeem",
+      label: "Purchases",
       onClick: () => {},
     },
     {
-      label: "How to Earn",
+      label: "How to use",
       onClick: () => {},
     },
     {
-      label: "How to Redeem",
+      label: "How to use",
       onClick: () => {},
     },
   ],
   secondColumnLinks: [
     {
-      label: "Stores to Earn",
+      label: "Terms of use",
       onClick: () => {},
     },
     {
-      label: "Stores to Redeem",
+      label: "Privacy policy",
       onClick: () => {},
     },
     {
-      label: "How to Earn",
+      label: "Cookies",
       onClick: () => {},
     },
     {
-      label: "How to Redeem",
+      label: "Accessibility",
       onClick: () => {},
     },
     {
-      label: "How to Redeem",
+      label: "About us",
       onClick: () => {},
     },
   ],

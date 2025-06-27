@@ -1,0 +1,31 @@
+@use "@app/Foundations/theme/colors";
+
+.carouselDot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  margin: 0;
+  background-color: colors.palette(gray, 400);
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  opacity: 0.25;
+  transition: all 200ms ease-in-out;
+
+  &.selected {
+    background-color: colors.palette(secondary, 500);
+    opacity: 1;
+  }
+
+  &.lightMode {
+    background-color: colors.palette(neutral, white);
+    opacity: 0.25;
+
+    &.selected {
+      opacity: 1;
+    }
+  }
+}

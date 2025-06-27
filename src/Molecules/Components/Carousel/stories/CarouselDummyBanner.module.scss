@@ -1,0 +1,17 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.carouselDummyBanner {
+  background-color: colors.palette(bg, 4);
+  padding: spacing.gap(gap-5);
+  border-radius: spacing.gap(gap-5);
+  height: 400px;
+
+  &.tablet {
+    height: 300px;
+  }
+
+  &.desktop {
+    height: 345px;
+  }
+}

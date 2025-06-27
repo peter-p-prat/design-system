@@ -1,0 +1,11 @@
+@use "@app/Foundations/theme/spacing";
+
+.largeModalChildren {
+  .text {
+    margin-top: spacing.gap(gap-6);
+  }
+
+  .lastText {
+    margin: spacing.gap(gap-3) 0;
+  }
+}

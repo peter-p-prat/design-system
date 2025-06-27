@@ -7,65 +7,50 @@ import {CardBackgroundWrapper} from "./CardBackgroundWrapper";
 import {CardStoryContent} from "./CardStoryContent";
 
 const meta = {
-    title: "Atoms/Card",
-    component: Card,
-    parameters: {
-        layout: "centered",
+  title: "Atoms/Card",
+  component: Card,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    hasHoverShadow: {
+      description:
+        "Allows the card to have a hover shadow (it only applies to desktop view)",
     },
-    tags: ["autodocs"],
-    argTypes: {
-        hasHoverShadow: {
-            description: "Allows the card to have a hover shadow (it only applies to desktop view)",
-        },
-        onClick: {
-            description: "Function to be called when the card is clicked",
-        },
-        children: {
-            description: "Content to be displayed inside the card",
-        },
-        customClassName: {
-            description: "Custom class name to be added to the card",
-        },
-        "data-testid": {
-            description: "Test ID",
-        },
+    onClick: {
+      description: "Function to be called when the card is clicked",
     },
-    args: {
-        "data-testid": "card",
+    children: {
+      description: "Content to be displayed inside the card",
     },
+    customClassName: {
+      description: "Custom class name to be added to the card",
+    },
+    "data-testid": {
+      description: "Test ID",
+    },
+  },
+  args: {
+    "data-testid": "card",
+  },
 } satisfies Meta<CardProps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Redeem: Story = {
-    args: {
-        hasHoverShadow: true,
-        children: <CardStoryContent />,
+export const SimpleCard: Story = {
+  args: {
+    hasHoverShadow: true,
+    children: <CardStoryContent />,
+  },
+  decorators: [
+    (Story) => {
+      return (
+        <CardBackgroundWrapper>
+          <Story />
+        </CardBackgroundWrapper>
+      );
     },
-    decorators: [
-        (Story) => {
-            return (
-                <CardBackgroundWrapper>
-                    <Story />
-                </CardBackgroundWrapper>
-            );
-        },
-    ],
-};
-
-export const Earn: Story = {
-    args: {
-        hasHoverShadow: true,
-        children: <CardStoryContent />,
-    },
-    decorators: [
-        (Story) => {
-            return (
-                <CardBackgroundWrapper>
-                    <Story />
-                </CardBackgroundWrapper>
-            );
-        },
-    ],
+  ],
 };

@@ -1,0 +1,80 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/spacing";
+
+.actionModalLayout {
+  width: 100%;
+  margin: spacing.gap(gap-4);
+  padding: spacing.gap(gap-6);
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: colors.palette(neutral, white);
+  color: colors.palette(gray, 500);
+  border-radius: spacing.gap(gap-5);
+  box-shadow: shadows.apply(lg);
+
+  @include breakpoints.media-breakpoint-up(tablet) {
+    margin-left: 0;
+    margin-right: 0;
+
+    &.lg {
+      width: 560px;
+    }
+
+    &.md {
+      width: 456px;
+    }
+
+    &.sm {
+      width: 328px;
+    }
+  }
+
+  &.fullScreen {
+    width: 100lvw;
+    margin: 0;
+    padding: spacing.gap(gap-6) spacing.gap(gap-3);
+    flex-direction: column;
+    overflow: scroll;
+    border-radius: 0;
+
+    @include breakpoints.media-breakpoint-up(tablet) {
+      padding: spacing.gap(gap-10) spacing.gap(gap-8);
+    }
+  }
+
+  &:not(.fullScreen) {
+    @include breakpoints.media-breakpoint-up(tablet) {
+      &.lg {
+        padding: spacing.gap(gap-8);
+      }
+
+      &.md {
+        padding: spacing.gap(gap-8) spacing.gap(gap-6);
+      }
+    }
+  }
+
+  .container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .closeContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .backButtonContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

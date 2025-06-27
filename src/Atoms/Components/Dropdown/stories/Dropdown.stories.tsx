@@ -519,12 +519,11 @@ export const Default: Story = {
       ),
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -540,12 +539,11 @@ export const Placeholder: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -569,12 +567,11 @@ export const LongText: Story = {
     ],
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -590,12 +587,11 @@ export const WithInitialBorders: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -611,12 +607,11 @@ export const OnlyIcon: Story = {
     desktopDropdownWidth: 200,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -632,12 +627,11 @@ export const WithRadioButtons: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -654,12 +648,11 @@ export const PreventSelectionClosing: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -676,12 +669,11 @@ export const PreventOutsideClickClosing: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -722,12 +714,11 @@ export const UsedAsMenu: Story = {
     ],
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -777,12 +768,11 @@ export const UsedAsMenuWithCallToAction: Story = {
     },
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -833,10 +823,12 @@ export const WithCustomTrigger: Story = {
     },
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
-        <DropdownWrapper withBackground={props.disableTransparency} light>
+        <DropdownWrapper
+          withBackground={args.disableTransparency}
+          light={args.light}
+        >
           <Story />
         </DropdownWrapper>
       );
@@ -881,12 +873,11 @@ export const WithDisabledTransparency: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -903,12 +894,11 @@ export const AlignedRight: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -925,12 +915,11 @@ export const AlignedLeft: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -946,12 +935,11 @@ export const OpenToTop: Story = {
     options: DEFAULT_OPTIONS,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -1004,12 +992,11 @@ export const WithSearch: Story = {
     ],
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -1137,12 +1124,11 @@ export const WithFormLabel: Story = {
     disableTransparency: true,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -1160,12 +1146,11 @@ export const WithFormTrigger: Story = {
     formTriggerSize: DropdownFormTriggerSizes.SMALL,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -1184,12 +1169,11 @@ export const WithInfoTooltip: Story = {
     dropdownListInfoTooltip: "This is an info tooltip",
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -1206,12 +1190,11 @@ export const WithDisabledMobileMode: Story = {
     disableMobileModalMode: true,
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
         </DropdownWrapper>
@@ -1269,12 +1252,11 @@ export const UsingCustomIcons: Story = {
     ],
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
           <p>WARNING: A veces las imagenes no cargan bien</p>
@@ -1321,12 +1303,11 @@ export const UsingComponentAsIcon: Story = {
     ],
   },
   decorators: [
-    (Story) => {
-      const {props} = Story();
+    (Story, {args}) => {
       return (
         <DropdownWrapper
-          withBackground={props.disableTransparency}
-          light={props.light}
+          withBackground={args.disableTransparency}
+          light={args.light}
         >
           <Story />
           <p>WARNING: A veces las imagenes no cargan bien</p>

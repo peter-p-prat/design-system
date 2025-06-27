@@ -1,0 +1,69 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.stepper {
+  display: flex;
+
+  &Container {
+    display: flex;
+    align-items: center;
+  }
+
+  &PageNumber {
+    @include typography.text(xxs, medium);
+    & {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 1px solid colors.palette(secondary, 100);
+      color: colors.palette(secondary, 100);
+    }
+
+    &:not(.disableResponsiveStyles) {
+      @include breakpoints.media-breakpoint-only(tablet) {
+        @include typography.text(md, medium);
+        & {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
+    &.current {
+      @include typography.text(xxs, bold);
+      & {
+        color: colors.palette(bg, 1);
+        border: 1px solid colors.palette(secondary, 600);
+        background-color: colors.palette(secondary, 600);
+      }
+
+      &:not(.disableResponsiveStyles) {
+        @include breakpoints.media-breakpoint-only(tablet) {
+          @include typography.text(md, bold);
+        }
+      }
+    }
+
+    &.past {
+      background-color: colors.palette(secondary, 100);
+    }
+
+    .checkIcon {
+      color: colors.palette(bg, 1);
+    }
+  }
+
+  .separator {
+    width: 16px;
+    height: 1px;
+    margin: 0 spacing.gap(gap-1);
+    background-color: colors.palette(secondary, 100);
+  }
+}

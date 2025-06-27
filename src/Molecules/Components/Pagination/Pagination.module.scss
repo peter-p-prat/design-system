@@ -1,0 +1,37 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/spacing";
+
+.pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: spacing.gap(gap-1);
+
+  :first-child {
+    margin-right: spacing.gap(gap-3);
+  }
+
+  :last-child {
+    margin-left: spacing.gap(gap-3);
+  }
+
+  .ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: colors.palette(gray, 500);
+    @include typography.text(md, medium);
+
+    &.large {
+      height: spacing.gap(gap-12);
+      width: spacing.gap(gap-12);
+    }
+
+    &.medium {
+      height: spacing.gap(gap-10);
+      width: spacing.gap(gap-10);
+    }
+  }
+}

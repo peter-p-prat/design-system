@@ -1,0 +1,19 @@
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/spacing";
+
+.carouselButton {
+  position: absolute;
+  top: calc(50% - spacing.gap(gap-6));
+  box-shadow: shadows.apply(lg);
+  height: spacing.gap(gap-12);
+  width: spacing.gap(gap-12);
+  border-radius: 50%;
+}
+
+.carouselButtonPrev {
+  left: -#{spacing.gap(gap-6)};
+}
+
+.carouselButtonNext {
+  right: -#{spacing.gap(gap-6)};
+}

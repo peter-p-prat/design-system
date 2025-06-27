@@ -1,0 +1,28 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.title {
+  @include typography.text(xl, bold);
+  & {
+    margin-bottom: spacing.gap(gap-4);
+    color: colors.palette(gray, 500);
+    text-align: center;
+  }
+
+  @include breakpoints.media-breakpoint-up(tablet) {
+    &.lg,
+    &.md {
+      @include typography.heading(xs, bold);
+    }
+  }
+
+  &.fullScreen {
+    @include typography.text(lg, bold);
+
+    @include breakpoints.media-breakpoint-up(tablet) {
+      @include typography.heading(xs, bold);
+    }
+  }
+}

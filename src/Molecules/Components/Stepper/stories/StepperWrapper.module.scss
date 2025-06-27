@@ -1,0 +1,20 @@
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.stepperWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: spacing.gap(gap-20);
+
+  &Controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: spacing.gap(gap-10);
+
+    &Label {
+      @include typography.text(md, medium);
+      grid-column: 1 / 3;
+    }
+  }
+}

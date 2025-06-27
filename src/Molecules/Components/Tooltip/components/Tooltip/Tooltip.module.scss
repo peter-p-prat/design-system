@@ -1,0 +1,165 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/shadows";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+$dark-color: colors.palette(primary, 900);
+$light-color: colors.palette(bg, 1);
+$tooltip-margin: spacing.gap(gap-3);
+$tooltip-offset: spacing.gap(gap-4);
+
+.tooltip {
+  --tooltip-arrow-size: 6px;
+  --tooltip-corner-offset: #{$tooltip-offset};
+  --tooltip-margin: #{$tooltip-margin};
+  --tooltip-arrow-color: #{$light-color};
+  display: inline-block;
+  position: relative;
+
+  &Container {
+    @include typography.text(xs, medium);
+    & {
+      width: max-content;
+      max-width: 200px;
+      padding: spacing.gap(gap-2) spacing.gap(gap-3);
+      display: flex;
+      border-radius: spacing.gap(gap-2);
+      box-shadow: shadows.apply(lg);
+      position: absolute;
+      z-index: layout.get-z-index(modal);
+    }
+
+    &.light {
+      --tooltip-arrow-color: #{$light-color};
+      background-color: #{$light-color};
+      color: colors.palette(gray, 500);
+    }
+
+    &.dark {
+      --tooltip-arrow-color: #{$dark-color};
+      background-color: #{$dark-color};
+      color: #{$light-color};
+    }
+
+    &::before {
+      content: "";
+      left: 50%;
+      border: solid transparent;
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-width: var(--tooltip-arrow-size);
+      margin-left: calc(var(--tooltip-arrow-size) * -1);
+    }
+
+    &.top {
+      top: 0;
+      transform: translateX(-50%) translateY(calc(-100% - var(--tooltip-margin)));
+      left: 50%;
+
+      &::before {
+        top: 100%;
+        border-top-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.bottom {
+      bottom: 0;
+      transform: translateX(-50%) translateY(calc(100% + var(--tooltip-margin)));
+      left: 50%;
+
+      &::before {
+        bottom: 100%;
+        border-bottom-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.right {
+      left: calc(100% + var(--tooltip-margin));
+      top: 50%;
+      transform: translateX(0) translateY(-50%);
+
+      &::before {
+        left: calc(var(--tooltip-arrow-size) * -1);
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        border-right-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.left {
+      left: auto;
+      right: calc(100% + var(--tooltip-margin));
+      top: 50%;
+      transform: translateX(0) translateY(-50%);
+
+      &::before {
+        left: auto;
+        right: calc(var(--tooltip-arrow-size) * -2);
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        border-left-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.topLeft {
+      top: 0;
+      right: 50%;
+      transform: translateX(var(--tooltip-corner-offset)) translateY(calc(-100% - var(--tooltip-margin)));
+
+      &::before {
+        top: 100%;
+        left: auto;
+        right: var(--tooltip-corner-offset);
+        transform: translateX(50%);
+        border-top-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.topRight {
+      top: 0;
+      left: 50%;
+      transform: translateX(calc(var(--tooltip-corner-offset) * -1)) translateY(calc(-100% - var(--tooltip-margin)));
+
+      &::before {
+        top: 100%;
+        left: calc(var(--tooltip-corner-offset) - var(--tooltip-arrow-size));
+        transform: translateX(50%);
+        border-top-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.bottomLeft {
+      bottom: 0;
+      right: 50%;
+      transform: translateX(var(--tooltip-corner-offset)) translateY(calc(100% + var(--tooltip-margin)));
+
+      &::before {
+        bottom: 100%;
+        left: auto;
+        right: var(--tooltip-corner-offset);
+        transform: translateX(50%);
+        border-bottom-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    &.bottomRight {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(calc(var(--tooltip-corner-offset) * -1)) translateY(calc(100% + var(--tooltip-margin)));
+
+      &::before {
+        bottom: 100%;
+        left: calc(var(--tooltip-corner-offset) - var(--tooltip-arrow-size));
+        transform: translateX(50%);
+        border-bottom-color: var(--tooltip-arrow-color);
+      }
+    }
+
+    .icon {
+      margin-right: spacing.gap(gap-2);
+    }
+  }
+}

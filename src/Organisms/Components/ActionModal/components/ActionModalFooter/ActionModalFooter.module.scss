@@ -1,0 +1,57 @@
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/spacing";
+
+.actionModalFooter {
+  width: 100%;
+  margin-top: spacing.gap(gap-10);
+  display: flex;
+  justify-content: center;
+
+  &PrimaryButton,
+  &SecondaryButton {
+    width: 100%;
+    order: 1;
+  }
+
+  &PrimaryButton {
+    @include breakpoints.media-breakpoint-up(tablet) {
+      min-width: 50%;
+      width: auto;
+    }
+
+    @include breakpoints.media-breakpoint-only(mobile) {
+      order: -1;
+    }
+  }
+
+  &:has(.actionModalFooterPrimaryButton:nth-child(2)) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include breakpoints.media-breakpoint-up(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .actionModalFooterPrimaryButton {
+      width: 100%;
+    }
+
+    &.sm {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.sm {
+    .actionModalFooter {
+      &PrimaryButton,
+      &SecondaryButton {
+        width: 100%;
+      }
+
+      &PrimaryButton {
+        order: -1;
+      }
+    }
+  }
+}

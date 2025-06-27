@@ -1,0 +1,12 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.infoCardBackgroundWrapper {
+  min-width: 400px;
+  min-height: 400px;
+  background-color: colors.palette(gray, 50);
+  padding: spacing.gap(gap-10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -107,12 +107,11 @@ const meta = {
     },
   },
   decorators: [
-    (Story) => {
-      const {
-        props: {appearance},
-      } = Story();
+    (Story, {args}) => {
       return (
-        <RadioButtonStoryWrapper theme={appearance}>
+        <RadioButtonStoryWrapper
+          theme={args.appearance ?? RadioButtonAppearance.LIGHT}
+        >
           <Story />
         </RadioButtonStoryWrapper>
       );

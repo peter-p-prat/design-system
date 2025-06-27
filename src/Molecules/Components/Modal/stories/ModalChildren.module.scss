@@ -1,0 +1,27 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.modalChildren {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: colors.palette(neutral, white);
+
+  .header {
+    width: 100%;
+    padding: 0 0 spacing.gap(gap-6) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: colors.palette(secondary, 100);
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: spacing.gap(gap-6) 0;
+    gap: spacing.gap(gap-3);
+  }
+}

@@ -1,0 +1,56 @@
+@use "@app/Foundations/theme/animations";
+@use "@app/Foundations/theme/breakpoints";
+@use "@app/Foundations/theme/layout";
+@use "@app/Foundations/theme/spacing";
+
+.notificationMessage {
+  width: 100vw;
+  position: fixed;
+  right: 0;
+  top: layout.get-layout-heights(webapp, header, mobile);
+  z-index: layout.get-z-index(message);
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    top: layout.get-layout-heights(webapp, header, tablet);
+  }
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    top: layout.get-layout-heights(webapp, header, desktop);
+  }
+
+  .container {
+    @include layout.container();
+    & {
+      position: relative;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.gap(gap-4);
+    position: absolute;
+    top: 0;
+    right: 0;
+    list-style: none;
+    margin: spacing.gap(gap-4) 0 0;
+    padding: 0;
+
+    @include breakpoints.media-breakpoint-only(mobile) {
+      width: 100%;
+    }
+  }
+
+  .messageContainer {
+    display: flex;
+    transition: all 0.4s ease-out;
+    width: 100%;
+    @include animations.animation(fadeIn, 0.5s);
+
+    @include breakpoints.media-breakpoint-up(tablet) {
+      width: var(--width, fit-content);
+      max-width: var(--width, fit-content);
+      top: layout.get-layout-heights(webapp, header, tablet);
+    }
+  }
+}

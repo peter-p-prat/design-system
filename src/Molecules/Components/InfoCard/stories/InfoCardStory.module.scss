@@ -1,0 +1,55 @@
+@use "@app/Foundations/theme/typography";
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/breakpoints";
+
+.infoCardStoryContainer {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  aspect-ratio: 160 / 172;
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    max-width: 164px;
+    aspect-ratio: 164 / 189;
+  }
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    max-width: 267px;
+    aspect-ratio: 267 / 242;
+  }
+}
+
+.infoCardStory {
+  &TextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.gap(gap-1);
+  }
+
+  &First {
+    @include typography.text(sm, medium);
+    & {
+      color: colors.palette(gray, 300);
+    }
+
+    &.hasChip {
+      @include typography.text(xs, medium);
+    }
+
+    @include breakpoints.media-breakpoint-up(tablet) {
+      @include typography.text(sm, medium);
+    }
+  }
+
+  &Second {
+    @include typography.text(md, bold);
+    & {
+      color: colors.palette(primary, 600);
+    }
+
+    @include breakpoints.media-breakpoint-only(desktop) {
+      @include typography.text(xl, bold);
+    }
+  }
+}

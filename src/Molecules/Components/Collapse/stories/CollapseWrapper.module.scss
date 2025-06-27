@@ -1,0 +1,13 @@
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/colors";
+
+.collapseWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: spacing.gap(gap-4);
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  width: 500px;
+  background-color: colors.palette(bg, 3);
+}

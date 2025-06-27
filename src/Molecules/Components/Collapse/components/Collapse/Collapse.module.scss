@@ -1,0 +1,7 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+
+.collapse {
+  background-color: colors.palette(neutral, white);
+  border-radius: spacing.gap(gap-2);
+}

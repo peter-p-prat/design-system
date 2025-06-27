@@ -1,0 +1,95 @@
+@use "@app/Foundations/theme/colors";
+@use "@app/Foundations/theme/spacing";
+@use "@app/Foundations/theme/typography";
+
+.collapseSkeleton {
+  width: 100%;
+
+  &:focus-visible,
+  .trigger:focus-visible {
+    // Disable Chrome selection when focusing
+    outline: none;
+  }
+
+  .trigger {
+    color: colors.palette(gray, 500);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    position: relative;
+
+    &.enableLineSeparator.isOpen::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: colors.palette(gray, 50);
+    }
+
+    &.extra-small {
+      @include typography.text(md, medium);
+      & {
+        padding: spacing.gap(gap-3) spacing.gap(gap-4);
+      }
+    }
+
+    &.small {
+      @include typography.text(md, medium);
+      & {
+        padding: spacing.gap(gap-4);
+      }
+
+      &:not(.enableLineSeparator).isOpen {
+        padding-bottom: spacing.gap(gap-2);
+      }
+    }
+
+    &.default {
+      @include typography.text(md, bold);
+      & {
+        padding: spacing.gap(gap-5);
+      }
+
+      &:not(.enableLineSeparator).isOpen {
+        padding-bottom: spacing.gap(gap-3);
+      }
+    }
+
+    &:hover:not(.withoutHoverColor) {
+      background-color: colors.palette(primary, 25);
+    }
+  }
+
+  .triggerIcon {
+    color: var(--icon-color, colors.palette(secondary, 500));
+    transition: transform 150ms ease-in;
+
+    &.isOpen {
+      transform: rotate(180deg);
+    }
+  }
+
+  .contentContainer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 300ms ease-in-out;
+    overflow: hidden;
+    padding: 0 spacing.gap(gap-5);
+
+    &.isOpen {
+      grid-template-rows: 1fr;
+      padding: 0 spacing.gap(gap-5) spacing.gap(gap-5);
+    }
+
+    &.disableContentPadding {
+      padding: 0;
+    }
+  }
+
+  .content {
+    overflow: hidden;
+  }
+}
